@@ -1,7 +1,7 @@
 public class Robot {
 
-	int posX;
-	int posY;
-	int orientation;
+	private int posX;
+	private int posY;
+	private int orientation;
 	
 	}

@@ -1,6 +1,6 @@
 public class Grille  {
 
-	int cellules[][];
-	Robot r;
+	private int cellules[][];
+	private Robot r;
 	
 	}
