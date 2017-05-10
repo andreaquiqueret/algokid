@@ -1,5 +1,3 @@
-package robotTest;
-
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
