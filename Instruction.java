@@ -3,7 +3,7 @@ public abstract class Instruction {
 
 	public Instruction()
 	{
-
+					
 	}
 
 	private abstract executer();

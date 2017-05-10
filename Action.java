@@ -6,6 +6,12 @@ public class Action implements Orientation extends Instruction {
 		super();
 	}
 
+	public Action(int n)
+	{
+		super();
+		this.action_num = n;
+	}
+
 	public void executer()
 	{
 
