@@ -23,11 +23,11 @@ public class Grille  {
 		return this.cellules;
 	}
 
+	//TODO: remmettre à 0 si cel == 1 && action == avancer || reculer
 	public void updateGrille() {
-		int x = this.r.getPosX();
-		int y = this.r.getPosY();
-
-		// je suis en train de la faire	
+		int i = this.r.get_i_from_y(this.r.getPosY());
+		int j = this.r.get_j_frim_x(this.r.getPosX());
+		this.cellules[i][j] = 1;
 	}
 
 }
