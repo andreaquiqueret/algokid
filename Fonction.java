@@ -45,7 +45,10 @@ public class Function extends Instruction {
 
 	public void executer()
 	{
-
+		for (int i = 0; i < this.instructions.size(); i++) {
+			Instruction i = this.instructions.get(i);
+			i.executer();
+		}	
 	}
 	
 	public void add_fonction(Fonction f, int index)
