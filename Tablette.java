@@ -13,11 +13,11 @@ public class Tablette implements Orientation{
 		pos = -1;
 	}
 	
-	public class save() {
+	public void save() {
 		
 	}
 	
-	public class charger() {
+	public void charger() {
 		
 	}
 	
