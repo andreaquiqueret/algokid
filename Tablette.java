@@ -23,7 +23,7 @@ public class Tablette implements Orientation{
 	
 	public void creerFonction(String[]fonction) {
 
-		ArrayList<Instruction> instructions = new ArrayList<Instruction>;
+		ArrayList<Instruction> instructions = new ArrayList<Instruction>();
 		for(int i=0; i<fonction.length(); i++) { //?? fonction = tableau qui recup sur l'interface
 			if (Integer.parseInt(fonction[i])==GAUCHE || Integer.parseInt(fonction[i])==DROITE || Integer.parseInt(fonction[i])==BAS || Integer.parseInt(fonction[i])==HAUT) //d'abbord traduire en action et fonction les numeros
 				instructions.add(new Action(Integer.parseInt(fonction[i])));
@@ -35,7 +35,7 @@ public class Tablette implements Orientation{
 				}
 			}
 		}
-		fonctions.add(new Fonction(instructions, new String("X"+numfct)))
+		fonctions.add(new Fonction(instructions, new String("X"+numfct)));
 	numfct++;
 		
 	}
@@ -57,6 +57,11 @@ public class Tablette implements Orientation{
 		}		
 		pos = -1;
 	}
+	
+	public void retirerFonction(int pos) {
+		principale.instructions.remove(pos);
+	}
+	
 	
 
 }
