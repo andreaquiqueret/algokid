@@ -11,8 +11,16 @@ public class Function extends Instruction {
 
 	public Fonction(ArrayList<Instruction> i, String nom)
 	{
+		super();
 		this.instructions = new ArrayList<Instruction>(i);
 		this.nom = new String(nom);
+	}
+
+	public Fonction(Fonction f)
+	{
+		super();
+		this.instructions = new ArrayList<Instruction>(f.getInstructions());
+		this.nom = new String(f.getNom());
 	}
 
 	public setInstructions(ArrayList<Instruction> i)
@@ -20,12 +28,15 @@ public class Function extends Instruction {
 		this.instruction = new ArrayList<Instruction>(i);
 	}
 
-
-
 	public setNom(String nom)
 	{
 		this.nom = new String(nom);
 	}
+	
+	public ArrayList<Instruction> getInstructions()
+	{		
+
+	}	return this.instructions;
 
 	public String getNom()
 	{
@@ -39,10 +50,18 @@ public class Function extends Instruction {
 	
 	public void add_fonction(Fonction f, int index)
 	{
+		if (index == -1)
+			instruction.add(new Fonction(f));
+		instruction.remove(i);
+		instructions.add(i, new Fonction(f))	
 
 	}
 
 	public void add_action(int num_action, int index)
 	{
+		if (index == -1)
+			instructions.add(new Action(num_action));
+		instruction.remove(i);
+		instructions.add(i, new Action(num_action))	
 	}
 }
