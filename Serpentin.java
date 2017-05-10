@@ -25,7 +25,6 @@ public class Serpentin extends JPanel
 		couleurHaut = new Color(67, 87, 116);
 		couleurCentre = new Color(53, 163, 169);
 		couleurBas = new Color(251, 158, 32);
-		
 	}
 	
 	public void paintComponent(Graphics g)
