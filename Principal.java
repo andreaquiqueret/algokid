@@ -1,4 +1,3 @@
-package robotTest;
 
 import java.awt.Dimension;
 
