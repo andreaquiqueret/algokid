@@ -47,12 +47,6 @@ public class Serpentin extends JPanel
 	{
 		for(int i = 0; i < 6; i++)
 		{
-			g.setColor(Color.WHITE);
-			g.fillOval(20 + (55 * i), 10, epaisseur, epaisseur);
-			g.setColor(Color.BLACK);
-			g.drawOval(20 + (55 * i), 10, epaisseur, epaisseur);
-		}
-
 			g.fillOval(espaceGauche + 10 + (60 * i), espaceHaut + 4, epaisseur - 10, epaisseur - 10);
 			g.setColor(Color.BLACK);
 			g.drawOval(espaceGauche + 10 + (60 * i), espaceHaut + 4, epaisseur - 10, epaisseur - 10);
