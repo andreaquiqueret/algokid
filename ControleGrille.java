@@ -14,7 +14,7 @@ public class ControleGrille {
 		    fenetre.setContentPane(dessin);
 		    fenetre.pack();
 		    fenetre.setVisible(true);
-		    /*dessin.requestFocusInWindow();
-		    dessin.requestFocus();*/
+		    dessin.requestFocusInWindow();
+		    dessin.requestFocus();
 	  }
 }
