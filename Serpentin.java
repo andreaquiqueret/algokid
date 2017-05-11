@@ -1,6 +1,7 @@
-import java.awt.Color;
-import java.awt.Graphics;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
 
 public class Serpentin extends JPanel
 {
@@ -25,6 +26,21 @@ public class Serpentin extends JPanel
 		couleurHaut = new Color(67, 87, 116);
 		couleurCentre = new Color(53, 163, 169);
 		couleurBas = new Color(251, 158, 32);
+		MouseListener ml = new MouseListener() {
+			  public void mouseClicked(MouseEvent e) {
+				donnerPosition();
+			  }
+			  public void mouseEntered(MouseEvent e) {
+			  }
+			  public void mouseExited(MouseEvent e) {
+			  }
+			  public void mousePressed(MouseEvent e) {
+			  }
+			  public void mouseReleased(MouseEvent e) {
+			  }
+		  };
+		  
+		  this.addMouseListener(ml);
 	}
 	
 	public void paintComponent(Graphics g)
@@ -32,39 +48,55 @@ public class Serpentin extends JPanel
 		super.paintComponent(g);
 		
 		dessineSerpentin(g);
-		dessinePoint(g);
+		dessinePoint(g,1);
+		
+		
 	}
 	
-	public void dessinePoint(Graphics g)
+	public void dessinePoint(Graphics g, int n)
 	{
-		for(int i = 0; i < 6; i++)
+		int i;
+		for(i = 0; i < 6; i++)
 		{
 			g.setColor(Color.WHITE);
 			g.fillOval(espaceGauche + 10 + (60 * i), espaceHaut + 4, epaisseur - 10, epaisseur - 10);
 			g.setColor(Color.BLACK);
 			g.drawOval(espaceGauche + 10 + (60 * i), espaceHaut + 4, epaisseur - 10, epaisseur - 10);
-			g.drawString(String.valueOf(i + 1), espaceGauche + 17 + (60 * i), espaceHaut + 18);
+			if(i+20*n>= 10)
+			{
+				g.drawString(String.valueOf(i+ 1+ 20*n), espaceGauche+(60 * i)+14, espaceHaut+18);
+			}
+			else
+			{
+				g.drawString(String.valueOf(i+1 +20*n), espaceGauche+ 17 + (60 * i), espaceHaut+18);
+			}
+			//g.drawString(String.valueOf(i + 1+20*n), espaceGauche + 17 + (60 * i), espaceHaut + 18);
 		}
-		
+	
 		g.setColor(Color.WHITE);
 		g.fillOval(espaceGauche + 42 + (60 * 5), espaceHaut + (tailleArc / 2) - 10, epaisseur - 10, epaisseur - 10);
 		g.setColor(Color.BLACK);
 		g.drawOval(espaceGauche + 42 + (60 * 5), espaceHaut + (tailleArc / 2) - 10, epaisseur - 10, epaisseur - 10);
-		g.drawString("7", espaceGauche + 49 + (60 * 5), espaceHaut + 5 + (tailleArc / 2));
+		if ((i + 1+20*n) < 10)
+			g.drawString(String.valueOf(i + 1+20*n), espaceGauche + 49 + (60 * 5), espaceHaut + 5 + (tailleArc / 2));
+		else
+			g.drawString(String.valueOf(i + 1+20*n), espaceGauche + 45 + (60 * 5), espaceHaut + 5 + (tailleArc / 2));
+		i++;
 		
-		for(int i = 0; i < 5; i++)
+		for(int j=0 ; j < 5; j++)
 		{
 			g.setColor(Color.WHITE);
-			g.fillOval(epaisseur + espaceGauche + tailleRect + 10 - (60 * i), espaceHaut + epaisseur + tailleArcEfface, epaisseur - 10, epaisseur - 10);
+			g.fillOval(epaisseur + espaceGauche + tailleRect + 10 - (60 * j), espaceHaut + epaisseur + tailleArcEfface, epaisseur - 10, epaisseur - 10);
 			g.setColor(Color.BLACK);
-			g.drawOval(epaisseur + espaceGauche + tailleRect + 10 - (60 * i), espaceHaut + epaisseur + tailleArcEfface, epaisseur - 10, epaisseur - 10);
-			if((i + 8) >= 10)
+			g.drawOval(epaisseur + espaceGauche + tailleRect + 10 - (60 * j), espaceHaut + epaisseur + tailleArcEfface, epaisseur - 10, epaisseur - 10);
+			i++;
+			if(i+20*n>= 10)
 			{
-				g.drawString(String.valueOf(i + 8), epaisseur + espaceGauche + tailleRect + 13 - (60 * i), espaceHaut + epaisseur + tailleArcEfface + 15);
+				g.drawString(String.valueOf(i+20*n), epaisseur + espaceGauche + tailleRect + 13 - (60 * j), espaceHaut + epaisseur + tailleArcEfface + 15);
 			}
 			else
 			{
-				g.drawString(String.valueOf(i + 8), epaisseur + espaceGauche + tailleRect + 17 - (60 * i), espaceHaut + epaisseur + tailleArcEfface + 15);
+				g.drawString(String.valueOf(i +20*n), epaisseur + espaceGauche + tailleRect + 17 - (60 * j), espaceHaut + epaisseur + tailleArcEfface + 15);
 			}
 		}
 		
@@ -72,28 +104,32 @@ public class Serpentin extends JPanel
 		g.fillOval(espaceGauche + 15, espaceHaut + epaisseur + tailleArcEfface + 12, epaisseur - 10, epaisseur - 10);
 		g.setColor(Color.BLACK);
 		g.drawOval(espaceGauche + 15, espaceHaut + epaisseur + tailleArcEfface + 12, epaisseur - 10, epaisseur - 10);
-		g.drawString("13", espaceGauche + 18, espaceHaut + epaisseur + tailleArcEfface + 26);
+		i++;
+		g.drawString(String.valueOf(i+20*n), espaceGauche + 18, espaceHaut + epaisseur + tailleArcEfface + 26);
 		
 		g.setColor(Color.WHITE);
+		i++;
 		g.fillOval(espaceGauche + 15, espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) - 13, epaisseur - 10, epaisseur - 10);
 		g.setColor(Color.BLACK);
 		g.drawOval(espaceGauche + 15, espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) - 13, epaisseur - 10, epaisseur - 10);
-		g.drawString("14", espaceGauche + 18,  espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 2);
+		g.drawString(String.valueOf(i+20*n), espaceGauche + 18,  espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 2);
 		
-		for(int i = 1; i < 6; i++)
+		for(int j = 1; j < 6; j++)
 		{
+			i++;
 			g.setColor(Color.WHITE);
-			g.fillOval(espaceGauche + 10 + (60 * i), espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2), epaisseur - 10, epaisseur - 10);
+			g.fillOval(espaceGauche + 10 + (60 * j), espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2), epaisseur - 10, epaisseur - 10);
 			g.setColor(Color.BLACK);
-			g.drawOval(espaceGauche + 10 + (60 * i), espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2), epaisseur - 10, epaisseur - 10);
-			g.drawString(String.valueOf(i + 14), espaceGauche + (60 * i) + 13, espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 15);
+			g.drawOval(espaceGauche + 10 + (60 * j), espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2), epaisseur - 10, epaisseur - 10);
+			g.drawString(String.valueOf(i + 20*n), espaceGauche + (60 * j) + 13, espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 15);
 		}
 		
+		i++;
 		g.setColor(Color.WHITE);
 		g.fillOval(espaceGauche + 42 + (60 * 5), espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 30, epaisseur - 10, epaisseur - 10);
 		g.setColor(Color.BLACK);
 		g.drawOval(espaceGauche + 42 + (60 * 5), espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 30, epaisseur - 10, epaisseur - 10);
-		g.drawString("20", espaceGauche + 45 + (60 * 5),  espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 45);
+		g.drawString(String.valueOf(i + 20*n), espaceGauche + 45 + (60 * 5),  espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 45);
 	}
 	
 	public void dessineSerpentin(Graphics g)
@@ -117,5 +153,11 @@ public class Serpentin extends JPanel
 		g.fillArc(tailleRect + 23, espaceHaut + epaisseur - 2, tailleArcEfface - 1, tailleArcEfface - 1, -90, 180);
 		g.fillArc(espaceGauche + epaisseur - 2, espaceHaut + (epaisseur * 2) - 5 + tailleArcEfface, tailleArcEfface + 1, tailleArcEfface + 1, 90, 180);
 		g.fillArc(tailleRect + 23, espaceHaut + (epaisseur * 3) - 7 + (tailleArcEfface * 2), tailleArcEfface, tailleArcEfface, -90, 180);
+	}
+	
+	public void donnerPosition() {
+		
+		 System.out.println("ok");
+		 
 	}
 }
