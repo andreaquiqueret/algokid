@@ -10,4 +10,35 @@ public class Robot implements Orientation {
 		this.orientation = HAUT;
 	}
 
+	public int getOrientation() {
+		return this.orientation;
+	}
+
+	public int getPosX() {
+		return this.posX;
+	}
+
+	public int getPosY() {
+		return this.posY;
+	}
+
+	public void setOrientation(int o) {
+		this.orientation = o;
+	}
+
+	public void setPosX(int x) {
+		this.posX = (x >= Grille.WIDTH || x < 0) ? 0 : x ;
+	}
+
+	public void setPosY(int y) {
+		this.posY = (y >= Grille.HEIGHT || y < 0) ? 0 : y;
+	}
+
+	public int get_i_from_y(int y) {
+		return posY;
+	}
+
+	public int get_j_frim_x(int x) {
+		return ((Grille.HEIGHT - 1) - posX;
+	}
 }
