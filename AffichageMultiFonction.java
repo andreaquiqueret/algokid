@@ -16,14 +16,14 @@ public class AffichageMultiFonction extends JPanel
 	private Color couleur;
 	private BufferedImage image;
 	
-	public AffichageMultiFonction() throws IOException
+	public AffichageMultiFonction(String path) throws IOException
 	{
 		epaisseur = 30;
 		espaceGauche = 80;
 		espaceHaut = 8;
 		tailleRect = 325;
 		couleur = new Color(204, 42, 88);
-		image = ImageIO.read(new File("./src/images/fonction.png"));
+		image = ImageIO.read(new File(path + "fonction.png"));
 	}
 	
 	public void paintComponent(Graphics g)

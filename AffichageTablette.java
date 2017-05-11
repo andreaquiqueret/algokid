@@ -9,6 +9,8 @@ public class AffichageTablette extends JPanel
 {
 	public AffichageTablette() throws IOException
 	{
+		String path = "./src/images/";
+		
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.BOTH;
@@ -21,19 +23,19 @@ public class AffichageTablette extends JPanel
 		c.weightx = 1.0;
 		c.weighty = 0.5;
 		c.gridy = 1;
-		add(new AffichageMultiFonction(), c);
+		add(new AffichageMultiFonction(path), c);
 		
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1.0;
 		c.weighty = 0.5;
 		c.gridy = 2;
-		add(new AffichageFonction(), c);
+		add(new AffichageFonction(path), c);
 		
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1.0;
 		c.weighty = 0.5;
 		c.gridy = 3;
-		add(new AffichageExecution(), c);
+		add(new AffichageExecution(path), c);
 	}
 	
 	public void paintComponent(Graphics g)

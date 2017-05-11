@@ -17,13 +17,13 @@ public class AffichageFonction extends JPanel
 	private int espaceGauche;
 	private int espaceHaut;
 	
-	public AffichageFonction() throws IOException
+	public AffichageFonction(String path) throws IOException
 	{
-		haut = ImageIO.read(new File("./src/images/haut.png"));
-		bas = ImageIO.read(new File("./src/images/bas.png"));
-		gauche = ImageIO.read(new File("./src/images/gauche.png"));
-		droite = ImageIO.read(new File("./src/images/droite.png"));
-		multi = ImageIO.read(new File("./src/images/fonction.png"));
+		haut = ImageIO.read(new File(path + "haut.png"));
+		bas = ImageIO.read(new File(path + "bas.png"));
+		gauche = ImageIO.read(new File(path + "gauche.png"));
+		droite = ImageIO.read(new File(path +"droite.png"));
+		multi = ImageIO.read(new File(path + "fonction.png"));
 		tailleImage = 45;
 		espaceGauche = 100;
 		espaceHaut = 10;

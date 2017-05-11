@@ -14,10 +14,10 @@ public class AffichageExecution extends JPanel
 	private int espaceGauche;
 	private int espaceHaut;
 	
-	public AffichageExecution() throws IOException
+	public AffichageExecution(String path) throws IOException
 	{
-		play = ImageIO.read(new File("./src/images/play.png"));
-		stop = ImageIO.read(new File("./src/images/stop.png"));
+		play = ImageIO.read(new File(path + "play.png"));
+		stop = ImageIO.read(new File(path + "stop.png"));
 		tailleImage = 45;
 		espaceGauche = 160;
 		espaceHaut = 10;

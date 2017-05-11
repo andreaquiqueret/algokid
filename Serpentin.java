@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
@@ -6,7 +5,6 @@ import javax.swing.JPanel;
 public class Serpentin extends JPanel
 {
 	private int epaisseur;
-
 	private int espaceGauche;
 	private int espaceHaut;
 	private int tailleRect;
@@ -15,12 +13,10 @@ public class Serpentin extends JPanel
 	private Color couleurHaut;
 	private Color couleurCentre;
 	private Color couleurBas;
-
 	
 	public Serpentin()
 	{
 		epaisseur = 30;
-
 		espaceGauche = 10;
 		tailleArc = 110;
 		tailleArcEfface = 54;
@@ -29,7 +25,6 @@ public class Serpentin extends JPanel
 		couleurHaut = new Color(67, 87, 116);
 		couleurCentre = new Color(53, 163, 169);
 		couleurBas = new Color(251, 158, 32);
-
 	}
 	
 	public void paintComponent(Graphics g)
@@ -37,9 +32,6 @@ public class Serpentin extends JPanel
 		super.paintComponent(g);
 		
 		dessineSerpentin(g);
-
-		//dessinePoint(g);
-
 		dessinePoint(g);
 	}
 	
@@ -47,6 +39,7 @@ public class Serpentin extends JPanel
 	{
 		for(int i = 0; i < 6; i++)
 		{
+			g.setColor(Color.WHITE);
 			g.fillOval(espaceGauche + 10 + (60 * i), espaceHaut + 4, epaisseur - 10, epaisseur - 10);
 			g.setColor(Color.BLACK);
 			g.drawOval(espaceGauche + 10 + (60 * i), espaceHaut + 4, epaisseur - 10, epaisseur - 10);
@@ -105,30 +98,6 @@ public class Serpentin extends JPanel
 	
 	public void dessineSerpentin(Graphics g)
 	{
-
-		g.setColor(new Color(67, 87, 116));
-		g.fillOval(10, 10, epaisseur, epaisseur);
-		g.fillRect(22, 11, 300, epaisseur - 1);
-		//g.fillArc(270, 11, 100, 100, -90, 90);
-		//g.fillArc(267, 11, 110, 110, 0, 90);
-		g.drawOval(267, 11, 110, 110);
-		g.drawOval(292, 39, 54, 54);
-		
-		g.setColor(new Color(53, 163, 169));
-		//g.fillArc(267, 11, 110, 110, -90, 90);
-		g.fillRect(55, 93, 270, epaisseur - 2);
-		g.fillArc(10, 92, 100, 100, 90, 90);
-
-		g.setColor(new Color(251, 158, 32));
-		g.fillArc(10, 92, 100, 100, 180, 90);
-		g.fillRect(55, 175, 270, epaisseur - 2);
-		g.fillArc(270, 175, 100, 100, 0, 90);
-		
-		g.setColor(getBackground());
-		//g.fillArc(286, 39, 54, 54, -90, 180);
-		g.fillArc(28, 111, 64, 64, 90, 180);
-		g.fillArc(286, 193, 64, 64, -90, 180);
-
 		g.setColor(couleurHaut);
 		g.fillOval(espaceGauche, espaceHaut - 1, epaisseur, epaisseur);
 		g.fillRect(espaceGauche + (epaisseur /2), espaceHaut, tailleRect + 30, epaisseur - 1);
