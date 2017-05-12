@@ -2,7 +2,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 
-public class ControleGrille {
+public class ControleGrille { //nom de fichier fonction et classe function, erreur ?
 
 		
 		public static void main(String[] args)
