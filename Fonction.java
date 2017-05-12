@@ -53,10 +53,10 @@ public class Fonction extends Instruction {
 	public void add_fonction(Fonction f, int index)
 	{
 		if (index == -1) {
-			instruction.add(new Fonction(f));
+			this.instruction.add(new Fonction(f));
 		} else {
-			instruction.remove(index);
-			instructions.add(index, new Fonction(f));
+			this.instruction.remove(index);
+			this.instructions.add(index, new Fonction(f));
 		}	
 
 	}
@@ -64,10 +64,10 @@ public class Fonction extends Instruction {
 	public void add_action(int num_action, int index)
 	{
 		if (index == -1) {
-			instructions.add(new Action(num_action));
+			this.instructions.add(new Action(num_action));
 		} else {
-			instruction.remove(index);
-			instructions.add(index, new Action(num_action))	
+			this.instruction.remove(index);
+			this.instructions.add(index, new Action(num_action))	
 		}
 	}
 }
