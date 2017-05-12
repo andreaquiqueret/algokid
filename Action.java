@@ -1,4 +1,4 @@
-public class Action implements Orientation extends Instruction {
+public class Action extends Instruction implements Orientation {
 	private int action_num;
 
 	public Action()
@@ -14,7 +14,11 @@ public class Action implements Orientation extends Instruction {
 
 	public void executer()
 	{
-		Robot r = Grille.getRobot();
+		//Robot r = Grille.getRobot(); // r = Grille.reference;
+
+		Robot r = Grille.r;
+		int[][] cel = Grille.cellules;
+
 		int o = r.getOrientation();
 		int x = r.getPosX();
 		int y = r.getPosY();
@@ -56,6 +60,7 @@ public class Action implements Orientation extends Instruction {
 			}
 		}
 
-		Grille.updateGrille();
+		//Grille.updateGrille(action_num);
+		Grille.updateGrille(action_num, cel, r);
 	}
 }

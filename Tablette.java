@@ -12,7 +12,15 @@ public class Tablette implements Orientation{
 		numfct = 0;
 		pos = -1;
 	}
-	
+
+	public Fonction getFonctionPrincipale() {
+		return this.principale;
+	}
+
+	public ArrayList<Fonction> getFonctions() {
+		return this.fonctions;
+	}
+
 	public void save() {
 		
 	}
@@ -21,13 +29,16 @@ public class Tablette implements Orientation{
 		
 	}
 	
-	public void creerFonction(String[]fonction) {
-
+	public void creerFonction(String[] fonction) {
 		ArrayList<Instruction> instructions = new ArrayList<Instruction>();
-		for(int i=0; i<fonction.length(); i++) { //?? fonction = tableau qui recup sur l'interface
-			if (Integer.parseInt(fonction[i])==GAUCHE || Integer.parseInt(fonction[i])==DROITE || Integer.parseInt(fonction[i])==BAS || Integer.parseInt(fonction[i])==HAUT) //d'abbord traduire en action et fonction les numeros
+		// fonction = tableau qui recup sur l'interface
+		for(int i=0; i<fonction.length(); i++) { 
+			if (Integer.parseInt(fonction[i]) == GAUCHE || 
+			    Integer.parseInt(fonction[i]) == DROITE || 
+			    Integer.parseInt(fonction[i]) == BAS    || 
+			    Integer.parseInt(fonction[i]) == HAUT) {
 				instructions.add(new Action(Integer.parseInt(fonction[i])));
-			else {
+			} else {
 				for (int j=0; j<fonctions.size(); j++) {
 					if (fonctions.get(j).getNom().compareTo(fonction[i])==0)
 						instructions.add(fonctions.get(j));
@@ -35,9 +46,9 @@ public class Tablette implements Orientation{
 				}
 			}
 		}
+	
 		fonctions.add(new Fonction(instructions, new String("X"+numfct)));
-	numfct++;
-		
+		numfct++;
 	}
 	
 	public void initialiserPosition(int p) {
