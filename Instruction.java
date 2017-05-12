@@ -1,6 +1,6 @@
 public abstract class Instruction {
 	private static int numero_instruction = 0;
-	private int index;
+	private int index; //useless ?
 	
 
 	public Instruction()
