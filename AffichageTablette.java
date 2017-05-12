@@ -9,7 +9,7 @@ public class AffichageTablette extends JPanel
 {
 	public AffichageTablette() throws IOException
 	{
-		String path = "./src/images/";
+		String path = "./images/";
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
