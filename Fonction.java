@@ -1,4 +1,4 @@
-public class Function extends Instruction { //nom de fichier fonction et classe function, erreur ?
+public class Fonction extends Instruction { 
 	private ArrayList<Instruction> instructions;
 	private String nom;
 
