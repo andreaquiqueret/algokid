@@ -1,9 +1,9 @@
-public class Grille  {
+public class Grille implements Orientation {
 
 	public static final int WIDTH = 10;
 	public static final int HEIGHT = 10;
 	public static int cellules[][];
-	private Robot r;
+	private static Robot r;
 
 	public Grille() {
 		this.r = new Robot();
@@ -18,16 +18,20 @@ public class Grille  {
 		return this.r;
 	}
 
-	//nop ??
-	public int[][] getCellules(){
+	/*public int[][] getCellules(){
 		return this.cellules;
-	}
+	}*/
 
-	//TODO: remmettre à 0 si cel == 1 && action == avancer || reculer
-	public void updateGrille() {
+	public void updateGrille(int action) {
 		int i = this.r.get_i_from_y(this.r.getPosY());
 		int j = this.r.get_j_frim_x(this.r.getPosX());
-		this.cellules[i][j] = 1;
+		
+		if (action == HAUT || action == BAS) {	
+			if (this.cellules[i][j] == 0)
+				this.cellules[i][j] = 1;
+			else 
+				this.cellules[i][j] = 0;
+		}
 	}
 
 }

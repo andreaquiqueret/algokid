@@ -56,6 +56,6 @@ public class Action implements Orientation extends Instruction {
 			}
 		}
 
-		Grille.updateGrille();
+		Grille.updateGrille(action_num);
 	}
 }
