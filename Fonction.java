@@ -52,18 +52,22 @@ public class Fonction extends Instruction {
 	
 	public void add_fonction(Fonction f, int index)
 	{
-		if (index == -1)
+		if (index == -1) {
 			instruction.add(new Fonction(f));
-		instruction.remove(i);
-		instructions.add(i, new Fonction(f))	
+		} else {
+			instruction.remove(index);
+			instructions.add(index, new Fonction(f));
+		}	
 
 	}
 
 	public void add_action(int num_action, int index)
 	{
-		if (index == -1)
+		if (index == -1) {
 			instructions.add(new Action(num_action));
-		instruction.remove(i);
-		instructions.add(i, new Action(num_action))	
+		} else {
+			instruction.remove(index);
+			instructions.add(index, new Action(num_action))	
+		}
 	}
 }
