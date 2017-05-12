@@ -34,10 +34,9 @@ public class Fonction extends Instruction {
 	}
 	
 	public ArrayList<Instruction> getInstructions()
-	{		
-
-	}	return this.instructions;
-
+	{	
+		return this.instructions;
+	}	
 	public String getNom()
 	{
 		return this.nom;
