@@ -12,7 +12,15 @@ public class Tablette implements Orientation{
 		numfct = 0;
 		pos = -1;
 	}
-	
+
+	public Fonction getFonctionPrincipale() {
+		return this.principale;
+	}
+
+	public ArrayList<Fonction> getFonctions() {
+		return this.fonctions;
+	}
+
 	public void save() {
 		
 	}
