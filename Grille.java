@@ -2,8 +2,13 @@ public class Grille implements Orientation {
 
 	public static final int WIDTH = 10;
 	public static final int HEIGHT = 10;
+	
 	public static int cellules[][];
-	private static Robot r;
+	public static Robot r;
+
+	//private int cellules[][];
+	//private Robot r;
+	//public static Robot reference;
 
 	public Grille() {
 		this.r = new Robot();
@@ -14,15 +19,18 @@ public class Grille implements Orientation {
 		this.cellules[HEIGHT - 1][0] = 1;
 	}
 
-	public Robot getRobot() {
+	/*public Robot getRobot() {
 		return this.r;
 	}
 
-	/*public int[][] getCellules(){
+	public int[][] getCellules(){
 		return this.cellules;
 	}*/
 
-	public void updateGrille(int action) {
+	// imposible car utilise r (mettre ne param la ref vers r ?)
+	// pareille pour cellules
+	/*
+	public static void updateGrille(int action) {
 		int i = this.r.get_i_from_posY();
 		int j = this.r.get_j_from_posX();
 		
@@ -31,6 +39,19 @@ public class Grille implements Orientation {
 				this.cellules[i][j] = 1;
 			else 
 				this.cellules[i][j] = 0;
+		}
+	}
+	*/
+
+	public static void updateGrille(int action, int[][] cel, Robot robot) {
+		int i = robot.get_i_from_posY();
+		int j = robot.get_j_from_posX();
+		
+		if (action == HAUT || action == BAS) {	
+			if (cel[i][j] == 0)
+				cel[i][j] = 1;
+			else 
+				cel[i][j] = 0;
 		}
 	}
 
