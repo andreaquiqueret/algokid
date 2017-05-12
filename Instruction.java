@@ -14,5 +14,5 @@ public abstract class Instruction {
 	}
 
 
-	private abstract executer();
+	public abstract void executer();
 }
