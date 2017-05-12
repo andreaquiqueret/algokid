@@ -49,13 +49,19 @@ public class Fonction extends Instruction {
 			ins.executer();
 		}	
 	}
-	
+
+	// lors d'un click droit par exemple
+	public void remove_instruction(int index) 
+	{
+		this.instruction.remove(index);
+	}
+
 	public void add_fonction(Fonction f, int index)
 	{
 		if (index == -1) {
 			this.instruction.add(new Fonction(f));
 		} else {
-			this.instruction.remove(index);
+			//this.instruction.remove(index); // peut être pas ?
 			this.instructions.add(index, new Fonction(f));
 		}	
 
@@ -66,7 +72,7 @@ public class Fonction extends Instruction {
 		if (index == -1) {
 			this.instructions.add(new Action(num_action));
 		} else {
-			this.instruction.remove(index);
+			//this.instruction.remove(index);
 			this.instructions.add(index, new Action(num_action))	
 		}
 	}
