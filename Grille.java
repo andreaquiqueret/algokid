@@ -23,8 +23,8 @@ public class Grille implements Orientation {
 	}*/
 
 	public void updateGrille(int action) {
-		int i = this.r.get_i_from_y(this.r.getPosY());
-		int j = this.r.get_j_frim_x(this.r.getPosX());
+		int i = this.r.get_i_from_posY();
+		int j = this.r.get_j_from_posX();
 		
 		if (action == HAUT || action == BAS) {	
 			if (this.cellules[i][j] == 0)
