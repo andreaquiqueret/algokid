@@ -93,7 +93,5 @@ public class Tablette implements Orientation{
 		g.display(g.cellules);
 	}	
 
-
-
 }
 

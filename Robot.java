@@ -39,6 +39,7 @@ public class Robot implements Orientation {
 	}
 
 
+
 	public int get_j_from_posX() {
 		return this.posX;
 
