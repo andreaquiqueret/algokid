@@ -6,11 +6,11 @@ public class Robot implements Orientation {
 
 	public Robot() {
 		this.posX = 0;
-		this.posy = 0;
+		this.posY = 0;
 		this.orientation = HAUT;
 	}
 
-	public int getOrientation() {
+	public int getOrientation(){
 		return this.orientation;
 	}
 
@@ -39,6 +39,6 @@ public class Robot implements Orientation {
 	}
 
 	public int get_j_frim_x(int x) {
-		return ((Grille.HEIGHT - 1) - posX;
+		return ((Grille.HEIGHT - 1) - posX);
 	}
 }
