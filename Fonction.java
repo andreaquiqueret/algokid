@@ -1,4 +1,4 @@
-public class Function extends Instruction {
+public class Fonction extends Instruction { 
 	private ArrayList<Instruction> instructions;
 	private String nom;
 
@@ -34,10 +34,9 @@ public class Function extends Instruction {
 	}
 	
 	public ArrayList<Instruction> getInstructions()
-	{		
-
-	}	return this.instructions;
-
+	{	
+		return this.instructions;
+	}	
 	public String getNom()
 	{
 		return this.nom;
@@ -46,25 +45,35 @@ public class Function extends Instruction {
 	public void executer()
 	{
 		for (int i = 0; i < this.instructions.size(); i++) {
-			Instruction i = this.instructions.get(i);
-			i.executer();
+			Instruction ins = this.instructions.get(i);
+			ins.executer();
 		}	
 	}
-	
+
+	// lors d'un click droit par exemple
+	public void remove_instruction(int index) 
+	{
+		this.instruction.remove(index);
+	}
+
 	public void add_fonction(Fonction f, int index)
 	{
-		if (index == -1)
-			instruction.add(new Fonction(f));
-		instruction.remove(i);
-		instructions.add(i, new Fonction(f))	
+		if (index == -1) {
+			this.instruction.add(new Fonction(f));
+		} else {
+			//this.instruction.remove(index); // peut être pas ?
+			this.instructions.add(index, new Fonction(f));
+		}	
 
 	}
 
 	public void add_action(int num_action, int index)
 	{
-		if (index == -1)
-			instructions.add(new Action(num_action));
-		instruction.remove(i);
-		instructions.add(i, new Action(num_action))	
+		if (index == -1) {
+			this.instructions.add(new Action(num_action));
+		} else {
+			//this.instruction.remove(index);
+			this.instructions.add(index, new Action(num_action))	
+		}
 	}
 }

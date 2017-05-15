@@ -1,9 +1,9 @@
-public class Grille  {
+public class Grille implements Orientation {
 
 	public static final int WIDTH = 10;
 	public static final int HEIGHT = 10;
 	public int cellules[][];
-	private Robot r;
+	public static Robot r;
 
 	public Grille() {
 		this.r = new Robot();
@@ -15,20 +15,40 @@ public class Grille  {
 		this.cellules[0][WIDTH-1] = 1;
 	}
 
-	public Robot getRobot() {
+	/*public Robot getRobot() {
 		return this.r;
 	}
 
-	//nop ??
 	public int[][] getCellules(){
 		return this.cellules;
-	}
+	}*/
 
-	//TODO: remmettre à 0 si cel == 1 && action == avancer || reculer
-	public void updateGrille() {
-		int i = this.r.get_i_from_y(this.r.getPosY());
-		int j = this.r.get_j_frim_x(this.r.getPosX());
-		this.cellules[i][j] = 1;
+	// imposible car utilise r (mettre ne param la ref vers r ?)
+	// pareille pour cellules
+	/*
+	public static void updateGrille(int action) {
+		int i = this.r.get_i_from_posY();
+		int j = this.r.get_j_from_posX();
+		
+		if (action == HAUT || action == BAS) {	
+			if (this.cellules[i][j] == 0)
+				this.cellules[i][j] = 1;
+			else 
+				this.cellules[i][j] = 0;
+		}
+	}
+	*/
+
+	public static void updateGrille(int action, int[][] cel, Robot robot) {
+		int i = robot.get_i_from_posY();
+		int j = robot.get_j_from_posX();
+		
+		if (action == HAUT || action == BAS) {	
+			if (cel[i][j] == 0)
+				cel[i][j] = 1;
+			else 
+				cel[i][j] = 0;
+		}
 	}
 
 }

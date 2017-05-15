@@ -1,7 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 public class AffichageGrille extends JPanel {
@@ -35,7 +34,12 @@ public class AffichageGrille extends JPanel {
 	grillage.setSize (600, 600);
 	this.setLayout(new BorderLayout());
 	this.add(grillage, BorderLayout.CENTER);
+
+
 	}
 	
-	
+	/*public void dessine() {
+		repaint();
+	}
+	*/
 }
