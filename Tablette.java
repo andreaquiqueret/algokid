@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Tablette implements Orientation{
 
 	private Fonction principale;
@@ -29,10 +31,14 @@ public class Tablette implements Orientation{
 		
 	}
 	
+	public void start() {
+		this.principale.executer();
+	}
+
 	public void creerFonction(String[] fonction) {
 		ArrayList<Instruction> instructions = new ArrayList<Instruction>();
 		// fonction = tableau qui recup sur l'interface
-		for(int i=0; i<fonction.length(); i++) { 
+		for(int i=0; i<fonction.length; i++) { 
 			if (Integer.parseInt(fonction[i]) == GAUCHE || 
 			    Integer.parseInt(fonction[i]) == DROITE || 
 			    Integer.parseInt(fonction[i]) == BAS    || 
@@ -63,16 +69,31 @@ public class Tablette implements Orientation{
 	
 	public void ajouterFonction(String nom){
 		for (int j=0; j<fonctions.size(); j++) {
-			if (fonctions.get(j).getNom().compareTo(fonction[i])==0)
+			if (fonctions.get(j).getNom().compareTo(nom)==0)
 				principale.add_fonction(fonctions.get(j), pos);
 		}		
 		pos = -1;
 	}
 	
 	public void retirerFonction(int pos) {
-		principale.instructions.remove(pos);
+		ArrayList<Instruction> i = this.principale.getInstructions();
+		i.remove(pos);
 	}
 	
-	
+	// test function
+	public static void main(String[] args) {
+		Grille g = new Grille();
+		Tablette t = new Tablette();	
+		g.display(g.cellules);
+		t.ajouterAction(HAUT);
+		t.ajouterAction(HAUT);
+		t.ajouterAction(DROITE);
+		t.ajouterAction(HAUT);		
+		t.start();
+		g.display(g.cellules);
+	}	
+
+
 
 }
+
