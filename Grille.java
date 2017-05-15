@@ -12,7 +12,7 @@ public class Grille implements Orientation {
 			for (int j = 0; j < WIDTH; j++)
 				this.cellules[i][j] = 0;
 		}
-		this.cellules[0][WIDTH-1] = 1;
+		this.cellules[HEIGHT-1][0] = 1;
 	}
 
 	/*public Robot getRobot() {

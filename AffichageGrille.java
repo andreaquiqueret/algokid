@@ -32,11 +32,14 @@ public class AffichageGrille extends JPanel  {
 						g.fillRect(i+50, j+50, 50, 50);
 						g.setColor(Color.blue);
 						g.drawRect(i+50,j+50,50,50);
-						if (a==r.get_i_from_posY() && b==r.get_j_from_posX()) {
+						System.out.println(b);
+						System.out.println(r.get_j_from_posX()-1);
+						if (b==(r.get_i_from_posY()-1) && a==(r.get_j_from_posX())) {
+							System.out.println("ok");
 							try {
 								
 								BufferedImage image = ImageIO.read(new File("./images/"+ r.getOrientation()+".png"));
-								g.drawImage(image,i+50,j+50,null);
+								g.drawImage(image,i+55,j+50,null);
 							}
 							catch (IOException exception) {
 								System.out.println("Image du robot introuvable");
