@@ -8,10 +8,9 @@ public class Grille implements Orientation {
 	public Grille() {
 		this.r = new Robot();
 		this.cellules = new int[HEIGHT][WIDTH];
-		for (int i = 0; i < HEIGHT; i++) {
+		for (int i = 0; i < HEIGHT; i++) 
 			for (int j = 0; j < WIDTH; j++)
 				this.cellules[i][j] = 0;
-		}
 		this.cellules[0][WIDTH-1] = 1;
 	}
 
