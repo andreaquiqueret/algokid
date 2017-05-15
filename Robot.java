@@ -35,7 +35,7 @@ public class Robot implements Orientation {
 	}
 	
 	public int get_i_from_posY() {
-		return Grille.HEIGHT - this.posY;
+		return (Grille.HEIGHT - 1) - this.posY;
 	}
 
 
