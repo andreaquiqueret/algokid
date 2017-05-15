@@ -2,7 +2,7 @@ public class Grille implements Orientation {
 
 	public static final int WIDTH = 10;
 	public static final int HEIGHT = 10;
-	public int cellules[][];
+	public static int cellules[][];
 	public static Robot r;
 
 	public Grille() {

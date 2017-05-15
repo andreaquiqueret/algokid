@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Fonction extends Instruction { 
 	private ArrayList<Instruction> instructions;
 	private String nom;
@@ -23,12 +25,12 @@ public class Fonction extends Instruction {
 		this.nom = new String(f.getNom());
 	}
 
-	public setInstructions(ArrayList<Instruction> i)
+	public void setInstructions(ArrayList<Instruction> i)
 	{
-		this.instruction = new ArrayList<Instruction>(i);
+		this.instructions = new ArrayList<Instruction>(i);
 	}
 
-	public setNom(String nom)
+	public void setNom(String nom)
 	{
 		this.nom = new String(nom);
 	}
@@ -53,13 +55,13 @@ public class Fonction extends Instruction {
 	// lors d'un click droit par exemple
 	public void remove_instruction(int index) 
 	{
-		this.instruction.remove(index);
+		this.instructions.remove(index);
 	}
 
 	public void add_fonction(Fonction f, int index)
 	{
 		if (index == -1) {
-			this.instruction.add(new Fonction(f));
+			this.instructions.add(new Fonction(f));
 		} else {
 			//this.instruction.remove(index); // peut être pas ?
 			this.instructions.add(index, new Fonction(f));
@@ -73,7 +75,7 @@ public class Fonction extends Instruction {
 			this.instructions.add(new Action(num_action));
 		} else {
 			//this.instruction.remove(index);
-			this.instructions.add(index, new Action(num_action))	
+			this.instructions.add(index, new Action(num_action));
 		}
 	}
 }
