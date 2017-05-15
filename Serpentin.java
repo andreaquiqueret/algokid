@@ -14,8 +14,9 @@ public class Serpentin extends JPanel
 	private Color couleurHaut;
 	private Color couleurCentre;
 	private Color couleurBas;
+	private int nSerpentin;
 	
-	public Serpentin()
+	public Serpentin(int n)
 	{
 		epaisseur = 30;
 		espaceGauche = 10;
@@ -26,9 +27,11 @@ public class Serpentin extends JPanel
 		couleurHaut = new Color(67, 87, 116);
 		couleurCentre = new Color(53, 163, 169);
 		couleurBas = new Color(251, 158, 32);
+		nSerpentin=n;
 		MouseListener ml = new MouseListener() {
 			  public void mouseClicked(MouseEvent e) {
-				donnerPosition();
+				donnerPosition(e);
+		
 			  }
 			  public void mouseEntered(MouseEvent e) {
 			  }
@@ -48,13 +51,14 @@ public class Serpentin extends JPanel
 		super.paintComponent(g);
 		
 		dessineSerpentin(g);
-		dessinePoint(g,1);
+		dessinePoint(g);
 		
 		
 	}
 	
-	public void dessinePoint(Graphics g, int n)
+	public void dessinePoint(Graphics g)
 	{
+		int n = nSerpentin;
 		int i;
 		for(i = 0; i < 6; i++)
 		{
@@ -155,9 +159,26 @@ public class Serpentin extends JPanel
 		g.fillArc(tailleRect + 23, espaceHaut + (epaisseur * 3) - 7 + (tailleArcEfface * 2), tailleArcEfface, tailleArcEfface, -90, 180);
 	}
 	
-	public void donnerPosition() {
+	public void donnerPosition(MouseEvent e) {
 		
-		 System.out.println("ok");
+		Point p = new Point (e.getX(), e.getY());
+		if (e.getY() > 13 && e.getY() <40) {
+			for (int i=0; i<=6; i++){
+				if (e.getX() >15+60*i && e.getX() <45+60*i)
+					System.out.println(i+1+20*nSerpentin);
+			}
+		}
+		
+		if(e.getX()>345 && e.getX()<375 && e.getY()>50 && e.getY()<80)
+			System.out.println(7+20*nSerpentin);
+		
+		if (e.getY() > 13 && e.getY() <40) {
+			for (int i=12; i>7; i--){
+				if (e.getX() >15+60*i && e.getX() <45+60*i)
+					System.out.println(i+1+20*nSerpentin);
+			}
+		}
+		
 		 
 	}
 }

@@ -17,7 +17,7 @@ public class AffichageTablette extends JPanel
 		c.weightx = 1.0;
 		c.weighty = 2.0;
 		c.gridy = 0;
-		add(new Serpentin(), c);
+		add(new Serpentin(0), c);
 		
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1.0;

@@ -2,21 +2,17 @@ public class Grille implements Orientation {
 
 	public static final int WIDTH = 10;
 	public static final int HEIGHT = 10;
-	
-	public static int cellules[][];
+	public int cellules[][];
 	public static Robot r;
-
-	//private int cellules[][];
-	//private Robot r;
-	//public static Robot reference;
 
 	public Grille() {
 		this.r = new Robot();
 		this.cellules = new int[HEIGHT][WIDTH];
-		for (int i = 0; i < HEIGHT; i++)
+		for (int i = 0; i < HEIGHT; i++) {
 			for (int j = 0; j < WIDTH; j++)
 				this.cellules[i][j] = 0;
-		this.cellules[HEIGHT - 1][0] = 1;
+		}
+		this.cellules[0][WIDTH-1] = 1;
 	}
 
 	/*public Robot getRobot() {
