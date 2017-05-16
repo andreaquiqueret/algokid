@@ -11,7 +11,7 @@ public class AffichageTablette extends JPanel
 	
 	public AffichageTablette(Tablette t, Grille g) throws IOException
 	{
-		String path = "./src/images/";
+		String path = "./images/";
 		estFonction = false;
 		
 		setLayout(new GridBagLayout());
