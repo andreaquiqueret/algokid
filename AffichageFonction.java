@@ -20,8 +20,9 @@ public class AffichageFonction extends JPanel implements Orientation
 	private int espaceGauche;
 	private int espaceHaut;
 	Tablette tablette;
+	Grille g;
 	
-	public AffichageFonction(String path, Tablette t) throws IOException
+	public AffichageFonction(String path, Tablette t, Grille g) throws IOException
 	{
 		haut = ImageIO.read(new File(path + "haut.png"));
 		bas = ImageIO.read(new File(path + "bas.png"));
@@ -32,6 +33,7 @@ public class AffichageFonction extends JPanel implements Orientation
 		espaceGauche = 100;
 		espaceHaut = 10;
 		tablette = t;
+		this.g = g;
 		MouseListener ml = new MouseListener() {
 			  public void mouseClicked(MouseEvent e) {
 				setBouton(e);
@@ -76,11 +78,14 @@ public class AffichageFonction extends JPanel implements Orientation
 		if(e.getX()> espaceGauche + ((tailleImage + 5) * 2) && e.getX()< espaceGauche + ((tailleImage + 5) * 2)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
 			tablette.ajouterAction(HAUT);
 		if(e.getX()>espaceGauche + ((tailleImage + 5) * 3) && e.getX()<espaceGauche + ((tailleImage + 5) * 3)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
-			tablette.ajouterAction(BAS);
-		tablette.start();
-		Grille g = new Grille();
-		g.display(g.cellules);
+			tablette.ajouterAction(BAS);	
 		//if(e.getX()> espaceGauche + ((tailleImage + 5) * 4) && e.getX()< espaceGauche + ((tailleImage + 5) * 4)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
 			//tablette.ajouterFonction(??);
+
+		// test (OK ca marche :) )	
+		this.tablette.start();
+		this.g.display(g.cellules);
+		
+		
 	}
 }

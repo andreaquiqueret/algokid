@@ -10,8 +10,9 @@ public class Principal extends JPanel
 {
 	public static void main(String[] args) throws IOException 
 	{
+		Grille g = new Grille();
 		Tablette t = new Tablette();
-		AffichageTablette panneau = new AffichageTablette(t);
+		AffichageTablette panneau = new AffichageTablette(t, g);
 		AffichageGrille grille = new AffichageGrille();
 		JSplitPane contenu = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,true);
 		contenu.setDividerLocation(450);

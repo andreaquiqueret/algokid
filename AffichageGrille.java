@@ -12,12 +12,12 @@ public class AffichageGrille extends JPanel  {
 	private Color couleurParcours;
 
 	public AffichageGrille () throws IOException {
-		Grille grille = new Grille();
-		Robot r = grille.r;
 		couleurParcours = new Color(57, 172, 69);
 		final JPanel grillage = new JPanel() {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
+				Grille grille = new Grille();
+				Robot r = grille.r;
 				int largeur = grille.WIDTH*50;
 				int hauteur = grille.HEIGHT*50;
 				int a=-1;
