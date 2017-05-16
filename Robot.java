@@ -23,7 +23,16 @@ public class Robot implements Orientation {
 	}
 
 	public void setOrientation(int o) {
-		this.orientation = o;
+		if (this.orientation == HAUT && (o == DROITE || o == GAUCHE))
+			this.orientation = o;
+		else if ((this.orientation == DROITE && o == DROITE) ||
+			 (this.orientation == GAUCHE && o == GAUCHE))
+			this.orientation = BAS;
+		else if ((this.orientation == DROITE && o == GAUCHE) ||
+			 (this.orientation == GAUCHE && o == DROITE))
+			this.orientation = HAUT;
+		else
+			this.orientation = o;	
 	}
 
 	public void setPosX(int x) {
@@ -48,10 +57,7 @@ public class Robot implements Orientation {
 		return (Grille.HEIGHT - 1) - this.posY;
 	}
 
-
-
 	public int get_j_from_posX() {
 		return this.posX;
-
 	}
 }

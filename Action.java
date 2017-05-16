@@ -57,7 +57,7 @@ public class Action extends Instruction implements Orientation {
 				break;
 			}
 		}
-
+ 
 		Grille.updateGrille(action_num, cel, r);
 	}
 }
