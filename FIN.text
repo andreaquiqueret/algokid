@@ -3,6 +3,11 @@ methode save:
 	pas grave ça marche quand même (on a toute les actions) mais on perd la def de la fonction (mais pas son 
 	contenu)
 
+	Le programme crée un fichier sous la form 20170516190540 (année mois jour heure seconde) 
+	c'est celui ci qu'il faut redonner au programme
+
+	(exemple) $java Principale 20170516190540  
+
 methode charge:
 	marche mais ne raffiche pas les image des fleches sur le serpentin (trop compliqué car celles-ci étaient 
 	ajouter lors d'un click. Mais bon quand on fait le bouton lecture, le robot bouge quand même. En gros on
