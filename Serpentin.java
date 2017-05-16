@@ -240,7 +240,7 @@ public class Serpentin extends JPanel
 				}
 			}
 		}
-		
+		t.retirerFonction(i);
 		repaint();
 		validate();
 	}

@@ -83,6 +83,7 @@ public class Tablette implements Orientation{
 	public void retirerFonction(int pos) {
 		ArrayList<Instruction> i = this.principale.getInstructions();
 		i.remove(pos);
+		initialiserPosition(pos);
 	}
 	
 	// test function
@@ -148,6 +149,7 @@ public class Tablette implements Orientation{
 		t.start();
 		g.display(g.cellules);
 	}	
+	
 	
 	
 
