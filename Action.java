@@ -12,6 +12,11 @@ public class Action extends Instruction implements Orientation {
 		this.action_num = n;
 	}
 
+	public int getActionNumber()
+	{
+		return this.action_num;
+	}
+
 	public void executer()
 	{
 		Robot r = Grille.r;
