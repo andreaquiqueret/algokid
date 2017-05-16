@@ -21,12 +21,14 @@ public class Serpentin extends JPanel
 	private Color couleurCentre;
 	private Color couleurBas;
 	private int nSerpentin;
-	private ArrayList<Point> lesPoints;
+	private ArrayList<PointImage> lesPoints;
 	private int nbUtilise;
+	private Tablette t;
 	
-	public Serpentin(int n)
+	public Serpentin(int n, Tablette t)
 	{
-		lesPoints = new ArrayList<Point>();
+		lesPoints = new ArrayList<PointImage>();
+		this.t = t;
 		nbUtilise = 0;
 		tailleImage = 45;
 		epaisseur = 30;
@@ -39,10 +41,19 @@ public class Serpentin extends JPanel
 		couleurCentre = new Color(53, 163, 169);
 		couleurBas = new Color(251, 158, 32);
 		nSerpentin=n;
-		MouseListener ml = new MouseListener() {
-			  public void mouseClicked(MouseEvent e) {
-				donnerPosition(e);
+		initPoint();
 		
+		MouseListener ml = new MouseListener() {
+			  public void mouseClicked(MouseEvent e) 
+			  {
+				  if(e.getButton() == MouseEvent.BUTTON3)
+				  {
+						removeImg(e);
+				  }
+				  else
+				  {
+					  donnerPosition(e);
+				  }
 			  }
 			  public void mouseEntered(MouseEvent e) {
 			  }
@@ -63,7 +74,45 @@ public class Serpentin extends JPanel
 		
 		dessineSerpentin(g);
 		dessinePoint(g);
+		dessineImage(g);
+	}
+	
+	private void dessineImage(Graphics g) 
+	{
+		for(PointImage p : lesPoints)
+		{
+			if(p.getImg() != null)
+			{
+				g.drawImage(p.getImg(), p.getX() - 12, p.getY() - 12, null);
+			}
+		}
+	}
+
+	public void initPoint()
+	{
+		int i;
 		
+		for(i = 0; i < 6; i++)
+		{
+			lesPoints.add(new PointImage(new Point(espaceGauche + 10 + (60 * i), espaceHaut + 4), null));
+		}
+		
+		lesPoints.add(new PointImage(new Point(espaceGauche + 42 + (60 * 5), espaceHaut + (tailleArc / 2) - 10), null));
+		
+		for(int j=0 ; j < 5; j++)
+		{
+			lesPoints.add(new PointImage(new Point(epaisseur + espaceGauche + tailleRect + 10 - (60 * j), espaceHaut + epaisseur + tailleArcEfface), null));
+		}
+		
+		lesPoints.add(new PointImage(new Point(espaceGauche + 15, espaceHaut + epaisseur + tailleArcEfface + 12), null));
+		lesPoints.add(new PointImage(new Point(espaceGauche + 15, espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) - 13), null));
+		
+		for(int j = 1; j < 6; j++)
+		{
+			lesPoints.add(new PointImage(new Point(espaceGauche + 10 + (60 * j), espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2)), null));
+		}
+		
+		lesPoints.add(new PointImage(new Point(espaceGauche + 42 + (60 * 5), espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 30), null));
 	}
 	
 	public void dessinePoint(Graphics g)
@@ -76,7 +125,6 @@ public class Serpentin extends JPanel
 			g.fillOval(espaceGauche + 10 + (60 * i), espaceHaut + 4, epaisseur - 10, epaisseur - 10);
 			g.setColor(Color.BLACK);
 			g.drawOval(espaceGauche + 10 + (60 * i), espaceHaut + 4, epaisseur - 10, epaisseur - 10);
-			lesPoints.add(new Point(espaceGauche + 10 + (60 * i), espaceHaut + 4));
 			if(i+20*n>= 10)
 			{
 				g.drawString(String.valueOf(i+ 1+ 20*n), espaceGauche+(60 * i)+14, espaceHaut+18);
@@ -92,7 +140,6 @@ public class Serpentin extends JPanel
 		g.fillOval(espaceGauche + 42 + (60 * 5), espaceHaut + (tailleArc / 2) - 10, epaisseur - 10, epaisseur - 10);
 		g.setColor(Color.BLACK);
 		g.drawOval(espaceGauche + 42 + (60 * 5), espaceHaut + (tailleArc / 2) - 10, epaisseur - 10, epaisseur - 10);
-		lesPoints.add(new Point(espaceGauche + 42 + (60 * 5), espaceHaut + (tailleArc / 2) - 10));
 		if ((i + 1+20*n) < 10)
 			g.drawString(String.valueOf(i + 1+20*n), espaceGauche + 49 + (60 * 5), espaceHaut + 5 + (tailleArc / 2));
 		else
@@ -105,7 +152,6 @@ public class Serpentin extends JPanel
 			g.fillOval(epaisseur + espaceGauche + tailleRect + 10 - (60 * j), espaceHaut + epaisseur + tailleArcEfface, epaisseur - 10, epaisseur - 10);
 			g.setColor(Color.BLACK);
 			g.drawOval(epaisseur + espaceGauche + tailleRect + 10 - (60 * j), espaceHaut + epaisseur + tailleArcEfface, epaisseur - 10, epaisseur - 10);
-			lesPoints.add(new Point(epaisseur + espaceGauche + tailleRect + 10 - (60 * j), espaceHaut + epaisseur + tailleArcEfface));
 			i++;
 			if(i+20*n>= 10)
 			{
@@ -121,7 +167,6 @@ public class Serpentin extends JPanel
 		g.fillOval(espaceGauche + 15, espaceHaut + epaisseur + tailleArcEfface + 12, epaisseur - 10, epaisseur - 10);
 		g.setColor(Color.BLACK);
 		g.drawOval(espaceGauche + 15, espaceHaut + epaisseur + tailleArcEfface + 12, epaisseur - 10, epaisseur - 10);
-		lesPoints.add(new Point(espaceGauche + 15, espaceHaut + epaisseur + tailleArcEfface + 12));
 		i++;
 		g.drawString(String.valueOf(i+20*n), espaceGauche + 18, espaceHaut + epaisseur + tailleArcEfface + 26);
 		
@@ -130,7 +175,6 @@ public class Serpentin extends JPanel
 		g.fillOval(espaceGauche + 15, espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) - 13, epaisseur - 10, epaisseur - 10);
 		g.setColor(Color.BLACK);
 		g.drawOval(espaceGauche + 15, espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) - 13, epaisseur - 10, epaisseur - 10);
-		lesPoints.add(new Point(espaceGauche + 15, espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) - 13));
 		g.drawString(String.valueOf(i+20*n), espaceGauche + 18,  espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 2);
 		
 		for(int j = 1; j < 6; j++)
@@ -140,7 +184,6 @@ public class Serpentin extends JPanel
 			g.fillOval(espaceGauche + 10 + (60 * j), espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2), epaisseur - 10, epaisseur - 10);
 			g.setColor(Color.BLACK);
 			g.drawOval(espaceGauche + 10 + (60 * j), espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2), epaisseur - 10, epaisseur - 10);
-			lesPoints.add(new Point(espaceGauche + 10 + (60 * j), espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2)));
 			g.drawString(String.valueOf(i + 20*n), espaceGauche + (60 * j) + 13, espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 15);
 		}
 		
@@ -149,7 +192,6 @@ public class Serpentin extends JPanel
 		g.fillOval(espaceGauche + 42 + (60 * 5), espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 30, epaisseur - 10, epaisseur - 10);
 		g.setColor(Color.BLACK);
 		g.drawOval(espaceGauche + 42 + (60 * 5), espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 30, epaisseur - 10, epaisseur - 10);
-		lesPoints.add(new Point(espaceGauche + 42 + (60 * 5), espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 30));
 		g.drawString(String.valueOf(i + 20*n), espaceGauche + 45 + (60 * 5),  espaceHaut + (epaisseur * 2) + (tailleArcEfface * 2) + 45);
 	}
 	
@@ -176,21 +218,63 @@ public class Serpentin extends JPanel
 		g.fillArc(tailleRect + 23, espaceHaut + (epaisseur * 3) - 7 + (tailleArcEfface * 2), tailleArcEfface, tailleArcEfface, -90, 180);
 	}
 	
-	public void donnerPosition(MouseEvent e) 
+	public void removeImg(MouseEvent e) 
 	{
 		boolean trouver = false;
 		int i = 0;
 		
 		while(trouver == false && i < lesPoints.size())
 		{
-			Point p = lesPoints.get(i);
-			if((e.getY() >= p.getY() && e.getY() <= p.getY() + (epaisseur - 10)) && (e.getX() >= p.getX() && e.getX() <= p.getX() + (epaisseur - 10)))
+			PointImage p = lesPoints.get(i);
+			
+			if(p.getImg() != null)
 			{
-				trouver = true;
+				if((e.getY() >= p.getY() && e.getY() <= p.getY() + tailleImage) && (e.getX() >= p.getX() && e.getX() <= p.getX() + tailleImage))
+				{
+					p.setImg(null);
+					trouver = true;
+				}
+				else
+				{
+					i++;
+				}
+			}
+		}
+		
+		repaint();
+		validate();
+	}
+	
+	public void donnerPosition(MouseEvent e)
+	{
+		boolean trouver = false;
+		int i = 0;
+		
+		while(trouver == false && i < lesPoints.size())
+		{
+			PointImage p = lesPoints.get(i);
+			
+			if(p.getImg() == null)
+			{
+				if((e.getY() >= p.getY() && e.getY() <= p.getY() + (epaisseur - 10)) && (e.getX() >= p.getX() && e.getX() <= p.getX() + (epaisseur - 10)))
+				{
+					trouver = true;
+				}
+				else
+				{
+					i++;
+				}
 			}
 			else
 			{
-				i++;
+				if((e.getY() >= p.getY() && e.getY() <= p.getY() + tailleImage) && (e.getX() >= p.getX() && e.getX() <= p.getX() + tailleImage))
+				{
+					trouver = true;
+				}
+				else
+				{
+					i++;
+				}
 			}
 		}
 		
@@ -202,13 +286,27 @@ public class Serpentin extends JPanel
 	
 	public void addPoint(BufferedImage img)
 	{
+		boolean trouver = false;
+		int i = 0;
+		
 		if(nbUtilise < lesPoints.size())
 		{
-			Graphics g = this.getGraphics();
-			Point p = lesPoints.get(nbUtilise);
-			
-			g.drawImage(img, p.x - 10, p.y - 10, null);
-			nbUtilise++;
+			while(!trouver && i < lesPoints.size())
+			{
+				PointImage p = lesPoints.get(i);
+				
+				if(p.getImg() == null)
+				{
+					p.setImg(img);
+					trouver = true;
+				}
+				else
+				{
+					i++;
+				}
+			}
+			repaint();
+			validate();
 		}
 	}
 }

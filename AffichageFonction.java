@@ -1,7 +1,7 @@
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -16,6 +16,7 @@ public class AffichageFonction extends JPanel implements Orientation
 	private BufferedImage gauche;
 	private BufferedImage droite;
 	private BufferedImage multi;
+	private ArrayList<Point> lesPoints;
 	private int tailleImage;
 	private int espaceGauche;
 	private int espaceHaut;
@@ -30,6 +31,7 @@ public class AffichageFonction extends JPanel implements Orientation
 		gauche = ImageIO.read(new File(path + "gauche.png"));
 		droite = ImageIO.read(new File(path +"droite.png"));
 		multi = ImageIO.read(new File(path + "fonction.png"));
+		lesPoints = new ArrayList<Point>();
 		tailleImage = 45;
 		espaceGauche = 100;
 		espaceHaut = 10;
@@ -58,12 +60,19 @@ public class AffichageFonction extends JPanel implements Orientation
 		super.paintComponent(g);
 		
 		g.drawImage(gauche, espaceGauche, espaceHaut, null);
+		lesPoints.add(new Point(espaceGauche, espaceHaut));
+		
 		g.drawImage(droite, espaceGauche + tailleImage + 5, espaceHaut, null);
+		lesPoints.add(new Point(espaceGauche + tailleImage + 5, espaceHaut));
+		
 		g.drawImage(haut, espaceGauche + ((tailleImage + 5) * 2), espaceHaut, null);
+		lesPoints.add(new Point(espaceGauche + ((tailleImage + 5) * 2), espaceHaut));
+		
 		g.drawImage(bas, espaceGauche + ((tailleImage + 5) * 3), espaceHaut, null);
+		lesPoints.add(new Point(espaceGauche + ((tailleImage + 5) * 3), espaceHaut));
+		
 		g.drawImage(multi, espaceGauche + ((tailleImage + 5) * 4), espaceHaut, null);
-		
-		
+		lesPoints.add(new Point(espaceGauche + ((tailleImage + 5) * 4), espaceHaut));
 	}
 	
 	
@@ -71,28 +80,88 @@ public class AffichageFonction extends JPanel implements Orientation
 		
 		//System.out.println(e.getX());
 		//System.out.println(e.getY());
-
-		if(e.getX()>espaceGauche && e.getX()<espaceGauche+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
-			tablette.ajouterAction(GAUCHE);
-			s.addPoint(gauche);
-			System.out.println("DEBUG: gauche");
+		boolean trouver = false;
+		int i = 0;
+		
+		while(trouver == false && i < lesPoints.size())
+		{
+			Point p = lesPoints.get(i);
+			if((e.getY() >= p.getY() && e.getY() <= p.getY() + tailleImage) && (e.getX() >= p.getX() && e.getX() <= p.getX() + tailleImage))
+			{
+				trouver = true;
+			}
+			else
+			{
+				i++;
+			}
 		}
 		
-		if(e.getX()> espaceGauche + tailleImage + 5 && e.getX()< espaceGauche + tailleImage + 5 +45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
-			tablette.ajouterAction(DROITE);
-			s.addPoint(droite);
-		}
-		
-		if(e.getX()> espaceGauche + ((tailleImage + 5) * 2) && e.getX()< espaceGauche + ((tailleImage + 5) * 2)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
-			tablette.ajouterAction(HAUT);
-			s.addPoint(haut);
-
-		}
-		
-		if(e.getX()>espaceGauche + ((tailleImage + 5) * 3) && e.getX()<espaceGauche + ((tailleImage + 5) * 3)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
-			tablette.ajouterAction(BAS);	
-			s.addPoint(bas);
-	
+		if(trouver)
+		{
+			if(AffichageTablette.estFonction)
+			{
+				
+			}
+			else
+			{
+				switch(i)
+				{
+					case 0: tablette.ajouterAction(GAUCHE);
+						s.addPoint(gauche);
+						System.out.println("DEBUG: gauche");
+						break;
+						
+					case 1: tablette.ajouterAction(DROITE);
+						s.addPoint(droite);
+						System.out.println("DEBUG: droite");
+						break;
+					
+					case 2: tablette.ajouterAction(HAUT);
+						s.addPoint(haut);
+						System.out.println("DEBUG: haut");
+						break;
+					
+					case 3: tablette.ajouterAction(BAS);	
+						s.addPoint(bas);
+						System.out.println("DEBUG: bas");
+						break;
+					
+					case 4: //tablette.ajouterAction(BAS);	
+						s.addPoint(multi);
+						System.out.println("DEBUG: fonction");
+						break;
+				}
+				
+				/*if(e.getX()>espaceGauche && e.getX()<espaceGauche+45 && e.getY()>espaceHaut && e.getY()<espaceHaut + tailleImage) {
+					tablette.ajouterAction(GAUCHE);
+					s.addPoint(gauche);
+					System.out.println("DEBUG: gauche");
+				}
+				
+				if(e.getX()> espaceGauche + tailleImage + 5 && e.getX()< espaceGauche + tailleImage + 5 + tailleImage && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
+					tablette.ajouterAction(DROITE);
+					s.addPoint(droite);
+					System.out.println("DEBUG: droite");
+				}
+				
+				if(e.getX()> espaceGauche + ((tailleImage + 5) * 2) && e.getX()< espaceGauche + ((tailleImage + 5) * 2) + tailleImage && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
+					tablette.ajouterAction(HAUT);
+					s.addPoint(haut);
+					System.out.println("DEBUG: haut");
+				}
+				
+				if(e.getX()>espaceGauche + ((tailleImage + 5) * 3) && e.getX()<espaceGauche + ((tailleImage + 5) * 3) + tailleImage && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
+					tablette.ajouterAction(BAS);	
+					s.addPoint(bas);
+					System.out.println("DEBUG: bas");
+				}
+				
+				if(e.getX()>espaceGauche + ((tailleImage + 5) * 4) && e.getX()<espaceGauche + ((tailleImage + 5) * 4) + tailleImage && e.getY()>espaceHaut && e.getY()<espaceHaut + tailleImage) {
+					//tablette.ajouterAction(BAS);	
+					s.addPoint(multi);
+					System.out.println("DEBUG: fonction");
+				}*/
+			}
 		}
 		
 		//if(e.getX()> espaceGauche + ((tailleImage + 5) * 4) && e.getX()< espaceGauche + ((tailleImage + 5) * 4)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
@@ -102,7 +171,6 @@ public class AffichageFonction extends JPanel implements Orientation
 		//this.tablette.start();
 		//this.g.display(g.cellules);
 		//this.g.cleanGrille();		
-		
 	}
 	
 }

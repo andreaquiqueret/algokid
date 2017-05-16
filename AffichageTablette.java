@@ -7,9 +7,12 @@ import javax.swing.JPanel;
 
 public class AffichageTablette extends JPanel
 {
+	public static boolean estFonction; //vrai si contruit fonction sinon sur serpentin
+	
 	public AffichageTablette(Tablette t, Grille g) throws IOException
 	{
-		String path = "./images/";
+		String path = "./src/images/";
+		estFonction = false;
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -17,7 +20,7 @@ public class AffichageTablette extends JPanel
 		c.weightx = 1.0;
 		c.weighty = 2.0;
 		c.gridy = 0;
-		Serpentin s = new Serpentin(0);
+		Serpentin s = new Serpentin(0, t);
 		add(s, c);
 		
 		c.fill = GridBagConstraints.BOTH;
