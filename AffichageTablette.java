@@ -36,7 +36,7 @@ public class AffichageTablette extends JPanel
 		c.weightx = 1.0;
 		c.weighty = 0.5;
 		c.gridy = 3;
-		add(new AffichageExecution(path), c);
+		add(new AffichageExecution(path, t), c);
 	}
 	
 	public void paintComponent(Graphics g)

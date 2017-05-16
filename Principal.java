@@ -13,7 +13,10 @@ public class Principal extends JPanel
 		Grille g = new Grille();
 		Tablette t = new Tablette();
 		AffichageTablette panneau = new AffichageTablette(t, g);
-		AffichageGrille grille = new AffichageGrille();
+		AffichageGrille grille = new AffichageGrille(g);
+		Controleur c = new Controleur(g, grille);
+		Thread thr = new Thread(c);
+		thr.start();
 		JSplitPane contenu = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,true);
 		contenu.setDividerLocation(450);
 		contenu.setDividerSize(0);

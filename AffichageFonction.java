@@ -100,9 +100,9 @@ public class AffichageFonction extends JPanel implements Orientation
 			//tablette.ajouterFonction(??);
 
 		// test (OK ca marche :) A SUPPRMIER EN VERSION FINALE)	
-		this.tablette.start();
-		this.g.display(g.cellules);
-		this.g.cleanGrille();		
+		//this.tablette.start();
+		//this.g.display(g.cellules);
+		//this.g.cleanGrille();		
 		
 	}
 	

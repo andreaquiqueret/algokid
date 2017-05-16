@@ -18,8 +18,10 @@ public class AffichageExecution extends JPanel
 	private int espaceGauche;
 	private int espaceHaut;
 	private ArrayList<Point> lesFleches;
+	Tablette t;
+
 	
-	public AffichageExecution(String path) throws IOException
+	public AffichageExecution(String path, Tablette tablette) throws IOException
 	{
 		play = ImageIO.read(new File(path + "play.png"));
 		stop = ImageIO.read(new File(path + "stop.png"));
@@ -27,7 +29,7 @@ public class AffichageExecution extends JPanel
 		tailleImage = 45;
 		espaceGauche = 160;
 		espaceHaut = 10;
-		
+		t=tablette;
 		MouseListener ml = new MouseListener() {
 			  public void mouseClicked(MouseEvent e) {
 				donnerPosition(e);
@@ -79,6 +81,7 @@ public class AffichageExecution extends JPanel
 			switch(i)
 			{
 				case 0: System.out.println("play");
+					t.start();
 					break;
 				case 1: System.out.println("stop");
 			}

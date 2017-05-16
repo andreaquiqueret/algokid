@@ -6,19 +6,27 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JPanel;
 
 
-public class AffichageGrille extends JPanel  {
+
+public class AffichageGrille extends JPanel implements Observer {
 	
 	private Color couleurParcours;
+	Grille grille;
 
-	public AffichageGrille () throws IOException {
+	public AffichageGrille (Grille grille) throws IOException {
 		couleurParcours = new Color(57, 172, 69);
 		final JPanel grillage = new JPanel() {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
-				Grille grille = new Grille();
 				Robot r = grille.r;
+				grille.display(grille.cellules);
 				int largeur = grille.WIDTH*50;
 				int hauteur = grille.HEIGHT*50;
 				int a=-1;
@@ -35,10 +43,7 @@ public class AffichageGrille extends JPanel  {
 						g.fillRect(i+50, j+50, 50, 50);
 						g.setColor(Color.blue);
 						g.drawRect(i+50,j+50,50,50);
-						System.out.println(b);
-						System.out.println(r.get_j_from_posX()-1);
 						if (b==(r.get_i_from_posY()) && a==(r.get_j_from_posX())) {
-							System.out.println("ok");
 							try {
 								
 								BufferedImage image = ImageIO.read(new File("./images/"+ r.getOrientation()+".png"));
@@ -63,8 +68,11 @@ public class AffichageGrille extends JPanel  {
 
 	}
 	
-	/*public void dessine() {
+	public void update(Observable o, Object arg)  {
+		System.out.println("je vais dans run merci andréa");
 		repaint();
+		
 	}
-	*/
+	
+	
 }

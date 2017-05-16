@@ -1,4 +1,11 @@
-public class Grille implements Orientation {
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JPanel;
+
+public class Grille implements Orientation{
 
 	public static final int WIDTH = 10;
 	public static final int HEIGHT = 10;
@@ -24,6 +31,7 @@ public class Grille implements Orientation {
 			else 
 				cel[i][j] = 0;
 		}
+
 	}
 
 	public static void cleanGrille() {
@@ -32,6 +40,7 @@ public class Grille implements Orientation {
 			for (int j = 0; j < WIDTH; j++)
 				g.cellules[i][j] = 0;
 		g.cellules[HEIGHT - 1][0] = 1;
+
 	}
 
 	// affichage test 
@@ -42,6 +51,7 @@ public class Grille implements Orientation {
 			System.out.print('\n');
 		}
 		System.out.print('\n');
+
 	}
 
 }

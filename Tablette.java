@@ -33,6 +33,7 @@ public class Tablette implements Orientation{
 	
 	public void start() {
 		this.principale.executer();
+
 	}
 
 	public void creerFonction(String[] fonction) {
