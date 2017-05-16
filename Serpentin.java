@@ -226,21 +226,21 @@ public class Serpentin extends JPanel
 		while(trouver == false && i < lesPoints.size())
 		{
 			PointImage p = lesPoints.get(i);
-			
-			if(p.getImg() != null)
+			if((e.getY() >= p.getY() && e.getY() <= p.getY() + tailleImage) && (e.getX() >= p.getX() && e.getX() <= p.getX() + tailleImage) && (p.getImg() != null))
 			{
-				if((e.getY() >= p.getY() && e.getY() <= p.getY() + tailleImage) && (e.getX() >= p.getX() && e.getX() <= p.getX() + tailleImage))
-				{
-					p.setImg(null);
-					trouver = true;
-				}
-				else
-				{
-					i++;
-				}
+				p.setImg(null);
+				trouver = true;
+			}
+			else
+			{
+				i++;
 			}
 		}
-		t.retirerFonction(i);
+		
+		if(trouver)
+		{
+			t.retirerFonction(i);
+		}
 		repaint();
 		validate();
 	}
