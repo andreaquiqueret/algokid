@@ -1,0 +1,9 @@
+methode save:
+	enregistre les action (je ne peux enregistrer les fonctions car on ajotue action par action dans l'afficheur)
+	pas grave ça marche quand même (on a toute les actions) mais on perd la def de la fonction (mais pas son 
+	contenu)
+
+methode charge:
+	marche mais ne raffiche pas les image des fleches sur le serpentin (trop compliqué car celles-ci étaient 
+	ajouter lors d'un click. Mais bon quand on fait le bouton lecture, le robot bouge quand même. En gros on
+	ça permet de rejouer l'algo mais on a pas le code source. C'est mieux que rien
