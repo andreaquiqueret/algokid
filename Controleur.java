@@ -17,7 +17,6 @@ public class Controleur  extends Observable implements Runnable{
 	
 	public void run()  {
 		while(true) {
-		System.out.println("run ok");
 		try {
 			Thread.sleep(1000) ;
         } catch (InterruptedException e) {

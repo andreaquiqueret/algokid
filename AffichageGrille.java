@@ -26,7 +26,6 @@ public class AffichageGrille extends JPanel implements Observer {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				Robot r = grille.r;
-				grille.display(grille.cellules);
 				int largeur = grille.WIDTH*50;
 				int hauteur = grille.HEIGHT*50;
 				int a=-1;

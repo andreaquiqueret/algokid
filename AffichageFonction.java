@@ -81,19 +81,18 @@ public class AffichageFonction extends JPanel implements Orientation
 		if(e.getX()> espaceGauche + tailleImage + 5 && e.getX()< espaceGauche + tailleImage + 5 +45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
 			tablette.ajouterAction(DROITE);
 			s.addPoint(droite);
-			System.out.println("DEBUG: droite");
 		}
 		
 		if(e.getX()> espaceGauche + ((tailleImage + 5) * 2) && e.getX()< espaceGauche + ((tailleImage + 5) * 2)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
 			tablette.ajouterAction(HAUT);
 			s.addPoint(haut);
-			System.out.println("DEBUG: haut");
+
 		}
 		
 		if(e.getX()>espaceGauche + ((tailleImage + 5) * 3) && e.getX()<espaceGauche + ((tailleImage + 5) * 3)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
 			tablette.ajouterAction(BAS);	
 			s.addPoint(bas);
-			System.out.println("DEBUG: bas");
+	
 		}
 		
 		//if(e.getX()> espaceGauche + ((tailleImage + 5) * 4) && e.getX()< espaceGauche + ((tailleImage + 5) * 4)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
