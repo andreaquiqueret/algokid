@@ -82,6 +82,8 @@ public class Tablette implements Orientation{
 	
 	// test function
 	public static void main(String[] args) {
+		// test 1
+		/*
 		Grille g = new Grille();
 		Tablette t = new Tablette();	
 		g.display(g.cellules);
@@ -89,6 +91,18 @@ public class Tablette implements Orientation{
 		t.ajouterAction(HAUT);
 		t.ajouterAction(DROITE);
 		t.ajouterAction(HAUT);		
+		t.start();
+		g.display(g.cellules);
+		*/
+	
+		// test 2
+		Grille g = new Grille();
+		Tablette t = new Tablette();
+		t.ajouterAction(HAUT);
+		String[] fct = {"4","1","4"};
+		t.creerFonction(fct);
+		t.ajouterFonction("X0");
+		t.ajouterAction(HAUT);
 		t.start();
 		g.display(g.cellules);
 	}	
