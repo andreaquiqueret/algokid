@@ -27,11 +27,21 @@ public class Robot implements Orientation {
 	}
 
 	public void setPosX(int x) {
-		this.posX = (x >= Grille.WIDTH || x < 0) ? 0 : x ;
+		if (x >= Grille.WIDTH)
+			this.posX = 0;
+		else if (x < 0)
+			this.posX = Grille.WIDTH - 1;
+		else
+			this.posX = x;
 	}
 
 	public void setPosY(int y) {
-		this.posY = (y >= Grille.HEIGHT || y < 0) ? 0 : y;
+		if (y >= Grille.HEIGHT)
+			this.posY = 0;
+		else if (y < 0)
+			this.posY = Grille.HEIGHT - 1;
+		else 
+			this.posY = y;
 	}
 	
 	public int get_i_from_posY() {
