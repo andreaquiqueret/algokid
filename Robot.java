@@ -25,13 +25,21 @@ public class Robot implements Orientation {
 	public void setOrientation(int o) {
 		if (this.orientation == HAUT && (o == DROITE || o == GAUCHE))
 			this.orientation = o;
+		else if (this.orientation == HAUT && o == BAS)
+			this.orientation = HAUT;
 		else if ((this.orientation == DROITE && o == DROITE) ||
 			 (this.orientation == GAUCHE && o == GAUCHE))
 			this.orientation = BAS;
 		else if ((this.orientation == DROITE && o == GAUCHE) ||
 			 (this.orientation == GAUCHE && o == DROITE))
 			this.orientation = HAUT;
-		else
+		else if (this.orientation == BAS && o == GAUCHE)
+		       this.orientation == DROITE;
+		else if (this.orientation == BAS && o == DROITE)
+			this.orienation = GAUCHE;	
+		else if (this.orientation == BAS && (o == HAUT || o = BAS))
+			this.orientation = o;	
+		else // HAUT & HAUT   BAS & BAS 
 			this.orientation = o;	
 	}
 

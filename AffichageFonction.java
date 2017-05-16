@@ -71,21 +71,33 @@ public class AffichageFonction extends JPanel implements Orientation
 		//System.out.println(e.getY());
 
 		
-		if(e.getX()>espaceGauche && e.getX()<espaceGauche+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
+		if(e.getX()>espaceGauche && e.getX()<espaceGauche+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
 			tablette.ajouterAction(GAUCHE);
-		if(e.getX()> espaceGauche + tailleImage + 5 && e.getX()< espaceGauche + tailleImage + 5 +45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
+			System.out.println("DEBUG: gauche");
+		}
+		
+		if(e.getX()> espaceGauche + tailleImage + 5 && e.getX()< espaceGauche + tailleImage + 5 +45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
 			tablette.ajouterAction(DROITE);
-		if(e.getX()> espaceGauche + ((tailleImage + 5) * 2) && e.getX()< espaceGauche + ((tailleImage + 5) * 2)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
+			System.out.println("DEBUG: droite");
+		}
+		
+		if(e.getX()> espaceGauche + ((tailleImage + 5) * 2) && e.getX()< espaceGauche + ((tailleImage + 5) * 2)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
 			tablette.ajouterAction(HAUT);
-		if(e.getX()>espaceGauche + ((tailleImage + 5) * 3) && e.getX()<espaceGauche + ((tailleImage + 5) * 3)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
+			System.out.println("DEBUG: haut");
+		}
+		
+		if(e.getX()>espaceGauche + ((tailleImage + 5) * 3) && e.getX()<espaceGauche + ((tailleImage + 5) * 3)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
 			tablette.ajouterAction(BAS);	
+			System.out.println("DEBUG: bas");
+		}
+
 		//if(e.getX()> espaceGauche + ((tailleImage + 5) * 4) && e.getX()< espaceGauche + ((tailleImage + 5) * 4)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
 			//tablette.ajouterFonction(??);
 
-		// test (OK ca marche :) )	
+		// test (OK ca marche :) A SUPPRMIER EN VERSION FINALE)	
 		this.tablette.start();
 		this.g.display(g.cellules);
-		
+		this.g.cleanGrille();		
 		
 	}
 }
