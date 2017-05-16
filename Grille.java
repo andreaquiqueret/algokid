@@ -24,7 +24,6 @@ public class Grille implements Orientation {
 			else 
 				cel[i][j] = 0;
 		}
-		//tab cel passé par ref ? sinon => return cel and call setCellules ?
 	}
 
 	// affichage test 
