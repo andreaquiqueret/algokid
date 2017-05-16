@@ -108,27 +108,24 @@ public class AffichageFonction extends JPanel implements Orientation
 				{
 					case 0: tablette.ajouterAction(GAUCHE);
 						s.addPoint(gauche);
-						System.out.println("DEBUG: gauche");
 						break;
 						
 					case 1: tablette.ajouterAction(DROITE);
 						s.addPoint(droite);
-						System.out.println("DEBUG: droite");
 						break;
 					
 					case 2: tablette.ajouterAction(HAUT);
 						s.addPoint(haut);
-						System.out.println("DEBUG: haut");
 						break;
 					
 					case 3: tablette.ajouterAction(BAS);	
 						s.addPoint(bas);
-						System.out.println("DEBUG: bas");
+						
 						break;
 					
 					case 4: //tablette.ajouterAction(BAS);	
 						s.addPoint(multi);
-						System.out.println("DEBUG: fonction");
+					
 						break;
 				}
 				
