@@ -9,7 +9,7 @@ public class AffichageTablette extends JPanel
 {
 	public AffichageTablette(Tablette t, Grille g) throws IOException
 	{
-		String path = "./images/";
+		String path = "./src/images/";
 		
 		setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -17,7 +17,8 @@ public class AffichageTablette extends JPanel
 		c.weightx = 1.0;
 		c.weighty = 2.0;
 		c.gridy = 0;
-		add(new Serpentin(0), c);
+		Serpentin s = new Serpentin(0);
+		add(s, c);
 		
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1.0;
@@ -29,7 +30,7 @@ public class AffichageTablette extends JPanel
 		c.weightx = 1.0;
 		c.weighty = 0.5;
 		c.gridy = 2;
-		add(new AffichageFonction(path, t, g), c);
+		add(new AffichageFonction(path, t, g, s), c);
 		
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1.0;

@@ -21,8 +21,9 @@ public class AffichageFonction extends JPanel implements Orientation
 	private int espaceHaut;
 	Tablette tablette;
 	Grille g;
+	Serpentin s;
 	
-	public AffichageFonction(String path, Tablette t, Grille g) throws IOException
+	public AffichageFonction(String path, Tablette t, Grille g, Serpentin s) throws IOException
 	{
 		haut = ImageIO.read(new File(path + "haut.png"));
 		bas = ImageIO.read(new File(path + "bas.png"));
@@ -34,6 +35,7 @@ public class AffichageFonction extends JPanel implements Orientation
 		espaceHaut = 10;
 		tablette = t;
 		this.g = g;
+		this.s = s;
 		MouseListener ml = new MouseListener() {
 			  public void mouseClicked(MouseEvent e) {
 				setBouton(e);
@@ -72,13 +74,25 @@ public class AffichageFonction extends JPanel implements Orientation
 
 		
 		if(e.getX()>espaceGauche && e.getX()<espaceGauche+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
+		{
 			tablette.ajouterAction(GAUCHE);
+			s.addPoint(gauche);
+		}
 		if(e.getX()> espaceGauche + tailleImage + 5 && e.getX()< espaceGauche + tailleImage + 5 +45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
+		{
 			tablette.ajouterAction(DROITE);
+			s.addPoint(droite);
+		}
 		if(e.getX()> espaceGauche + ((tailleImage + 5) * 2) && e.getX()< espaceGauche + ((tailleImage + 5) * 2)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
+		{
 			tablette.ajouterAction(HAUT);
+			s.addPoint(haut);
+		}
 		if(e.getX()>espaceGauche + ((tailleImage + 5) * 3) && e.getX()<espaceGauche + ((tailleImage + 5) * 3)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
-			tablette.ajouterAction(BAS);	
+		{
+			tablette.ajouterAction(BAS);
+			s.addPoint(bas);	
+		}
 		//if(e.getX()> espaceGauche + ((tailleImage + 5) * 4) && e.getX()< espaceGauche + ((tailleImage + 5) * 4)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
 			//tablette.ajouterFonction(??);
 
@@ -88,4 +102,5 @@ public class AffichageFonction extends JPanel implements Orientation
 		
 		
 	}
+	
 }
