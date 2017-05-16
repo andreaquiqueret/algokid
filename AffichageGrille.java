@@ -20,7 +20,7 @@ public class AffichageGrille extends JPanel implements Observer {
 	private Color couleurParcours;
 	Grille grille;
 
-	public AffichageGrille (Grille grille) throws IOException {
+	public AffichageGrille (final Grille grille) throws IOException {
 		couleurParcours = new Color(57, 172, 69);
 		final JPanel grillage = new JPanel() {
 			public void paintComponent(Graphics g) {
