@@ -13,7 +13,6 @@ public class Principal extends JPanel
 		Grille g = new Grille();
 		Tablette t = new Tablette();
 		
-		System.out.println("PASS"+args[0]+" "+args.length);
 		if (args.length == 1)
 			t.charger(args[0]);
 
