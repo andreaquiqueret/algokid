@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 public class AffichageTablette extends JPanel
 {
-	public AffichageTablette() throws IOException
+	public AffichageTablette(Tablette t, Grille g) throws IOException
 	{
 		String path = "./images/";
 		
@@ -29,7 +29,7 @@ public class AffichageTablette extends JPanel
 		c.weightx = 1.0;
 		c.weighty = 0.5;
 		c.gridy = 2;
-		add(new AffichageFonction(path), c);
+		add(new AffichageFonction(path, t, g), c);
 		
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1.0;

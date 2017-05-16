@@ -10,7 +10,9 @@ public class Principal extends JPanel
 {
 	public static void main(String[] args) throws IOException 
 	{
-		AffichageTablette panneau = new AffichageTablette();
+		Grille g = new Grille();
+		Tablette t = new Tablette();
+		AffichageTablette panneau = new AffichageTablette(t, g);
 		AffichageGrille grille = new AffichageGrille();
 		JSplitPane contenu = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,true);
 		contenu.setDividerLocation(450);
@@ -22,7 +24,6 @@ public class Principal extends JPanel
 		fenetre.setPreferredSize(new Dimension(1080, 650));
 		fenetre.getContentPane().add(contenu);
 		fenetre.pack();
-		
 		fenetre.setVisible(true);
 	}
 }

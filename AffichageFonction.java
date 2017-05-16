@@ -5,8 +5,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
-public class AffichageFonction extends JPanel
+public class AffichageFonction extends JPanel implements Orientation
 {
 	private BufferedImage haut;
 	private BufferedImage bas;
@@ -16,8 +19,10 @@ public class AffichageFonction extends JPanel
 	private int tailleImage;
 	private int espaceGauche;
 	private int espaceHaut;
+	Tablette tablette;
+	Grille g;
 	
-	public AffichageFonction(String path) throws IOException
+	public AffichageFonction(String path, Tablette t, Grille g) throws IOException
 	{
 		haut = ImageIO.read(new File(path + "haut.png"));
 		bas = ImageIO.read(new File(path + "bas.png"));
@@ -27,6 +32,23 @@ public class AffichageFonction extends JPanel
 		tailleImage = 45;
 		espaceGauche = 100;
 		espaceHaut = 10;
+		tablette = t;
+		this.g = g;
+		MouseListener ml = new MouseListener() {
+			  public void mouseClicked(MouseEvent e) {
+				setBouton(e);
+		
+			  }
+			  public void mouseEntered(MouseEvent e) {
+			  }
+			  public void mouseExited(MouseEvent e) {
+			  }
+			  public void mousePressed(MouseEvent e) {
+			  }
+			  public void mouseReleased(MouseEvent e) {
+			  }
+		  };
+		  this.addMouseListener(ml);
 	}
 	
 	public void paintComponent(Graphics g)
@@ -38,5 +60,32 @@ public class AffichageFonction extends JPanel
 		g.drawImage(haut, espaceGauche + ((tailleImage + 5) * 2), espaceHaut, null);
 		g.drawImage(bas, espaceGauche + ((tailleImage + 5) * 3), espaceHaut, null);
 		g.drawImage(multi, espaceGauche + ((tailleImage + 5) * 4), espaceHaut, null);
+		
+		
+	}
+	
+	
+	public void setBouton(MouseEvent e) {
+		
+		//System.out.println(e.getX());
+		//System.out.println(e.getY());
+
+		
+		if(e.getX()>espaceGauche && e.getX()<espaceGauche+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
+			tablette.ajouterAction(GAUCHE);
+		if(e.getX()> espaceGauche + tailleImage + 5 && e.getX()< espaceGauche + tailleImage + 5 +45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
+			tablette.ajouterAction(DROITE);
+		if(e.getX()> espaceGauche + ((tailleImage + 5) * 2) && e.getX()< espaceGauche + ((tailleImage + 5) * 2)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
+			tablette.ajouterAction(HAUT);
+		if(e.getX()>espaceGauche + ((tailleImage + 5) * 3) && e.getX()<espaceGauche + ((tailleImage + 5) * 3)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
+			tablette.ajouterAction(BAS);	
+		//if(e.getX()> espaceGauche + ((tailleImage + 5) * 4) && e.getX()< espaceGauche + ((tailleImage + 5) * 4)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
+			//tablette.ajouterFonction(??);
+
+		// test (OK ca marche :) )	
+		this.tablette.start();
+		this.g.display(g.cellules);
+		
+		
 	}
 }
