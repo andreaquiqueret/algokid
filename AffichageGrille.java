@@ -9,9 +9,11 @@ import javax.imageio.ImageIO;
 
 public class AffichageGrille extends JPanel  {
 	
+	private Color couleurParcours;
 
 	public AffichageGrille () throws IOException {
 		Robot r = new Robot();
+		couleurParcours = new Color(57, 172, 69);
 		final JPanel grillage = new JPanel() {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
@@ -28,7 +30,7 @@ public class AffichageGrille extends JPanel  {
 						if (grille.cellules[b][a] == 0)
 							g.setColor(Color.white);
 						else 
-							g.setColor(Color.green);
+							g.setColor(couleurParcours);
 						g.fillRect(i+50, j+50, 50, 50);
 						g.setColor(Color.blue);
 						g.drawRect(i+50,j+50,50,50);
