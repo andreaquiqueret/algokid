@@ -12,12 +12,12 @@ public class AffichageGrille extends JPanel  {
 	private Color couleurParcours;
 
 	public AffichageGrille () throws IOException {
-		Robot r = new Robot();
+		Grille grille = new Grille();
+		Robot r = grille.r;
 		couleurParcours = new Color(57, 172, 69);
 		final JPanel grillage = new JPanel() {
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
-				Grille grille = new Grille();
 				int largeur = grille.WIDTH*50;
 				int hauteur = grille.HEIGHT*50;
 				int a=-1;
@@ -36,7 +36,7 @@ public class AffichageGrille extends JPanel  {
 						g.drawRect(i+50,j+50,50,50);
 						System.out.println(b);
 						System.out.println(r.get_j_from_posX()-1);
-						if (b==(r.get_i_from_posY()-1) && a==(r.get_j_from_posX())) {
+						if (b==(r.get_i_from_posY()) && a==(r.get_j_from_posX())) {
 							System.out.println("ok");
 							try {
 								
