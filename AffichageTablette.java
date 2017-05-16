@@ -27,13 +27,14 @@ public class AffichageTablette extends JPanel
 		c.weightx = 1.0;
 		c.weighty = 0.5;
 		c.gridy = 1;
-		add(new AffichageMultiFonction(path), c);
+		AffichageMultiFonction m = new AffichageMultiFonction(path);
+		add(m, c);
 		
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1.0;
 		c.weighty = 0.5;
 		c.gridy = 2;
-		add(new AffichageFonction(path, t, g, s), c);
+		add(new AffichageFonction(path, t, g, s, m), c);
 		
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1.0;

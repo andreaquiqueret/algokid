@@ -20,11 +20,13 @@ public class AffichageFonction extends JPanel implements Orientation
 	private int tailleImage;
 	private int espaceGauche;
 	private int espaceHaut;
+	private ArrayList<Integer> tab;
 	Tablette tablette;
 	Grille g;
 	Serpentin s;
+	AffichageMultiFonction m;
 	
-	public AffichageFonction(String path, Tablette t, Grille g, Serpentin s) throws IOException
+	public AffichageFonction(String path, Tablette t, Grille g, Serpentin s, AffichageMultiFonction m) throws IOException
 	{
 		haut = ImageIO.read(new File(path + "haut.png"));
 		bas = ImageIO.read(new File(path + "bas.png"));
@@ -36,8 +38,10 @@ public class AffichageFonction extends JPanel implements Orientation
 		espaceGauche = 100;
 		espaceHaut = 10;
 		tablette = t;
+		tab = new ArrayList<Integer>();
 		this.g = g;
 		this.s = s;
+		this.m = m;
 		MouseListener ml = new MouseListener() {
 			  public void mouseClicked(MouseEvent e) {
 				setBouton(e);
@@ -100,6 +104,29 @@ public class AffichageFonction extends JPanel implements Orientation
 		{
 			if(AffichageTablette.estFonction)
 			{
+	
+				
+				switch(i)
+				{
+					case 0: 
+						m.addPoint(gauche);
+						tab.add(GAUCHE);
+						break;
+						
+					case 1: tab.add(DROITE);
+						m.addPoint(droite);
+						break;
+					
+					case 2: tab.add(HAUT);
+						m.addPoint(haut);
+						break;
+					
+					case 3: tab.add(BAS);
+						m.addPoint(bas);
+						break;
+					
+					
+				}
 				
 			}
 			else
@@ -125,7 +152,9 @@ public class AffichageFonction extends JPanel implements Orientation
 					
 					case 4: //tablette.ajouterAction(BAS);	
 						s.addPoint(multi);
-					
+						for (int j=0; j<tab.size(); j++) {
+							tablette.ajouterAction(tab.get(j));
+						}
 						break;
 				}
 				
