@@ -14,6 +14,7 @@ public class AffichageExecution extends JPanel
 {
 	private BufferedImage play;
 	private BufferedImage stop;
+	private BufferedImage sauvegarde;
 	private int tailleImage;
 	private int espaceGauche;
 	private int espaceHaut;
@@ -25,6 +26,7 @@ public class AffichageExecution extends JPanel
 	{
 		play = ImageIO.read(new File(path + "play.png"));
 		stop = ImageIO.read(new File(path + "stop.png"));
+		sauvegarde = ImageIO.read(new File(path + "sauvegarde.png"));
 		lesFleches = new ArrayList<Point>();
 		tailleImage = 45;
 		espaceGauche = 160;
@@ -56,6 +58,9 @@ public class AffichageExecution extends JPanel
 		
 		g.drawImage(stop, espaceGauche + tailleImage + 5, espaceHaut, null);
 		lesFleches.add(new Point(espaceGauche + tailleImage + 5, espaceHaut));
+		
+		g.drawImage(sauvegarde, espaceGauche + tailleImage*2 + 15, espaceHaut, null);
+		lesFleches.add(new Point(espaceGauche + tailleImage*2 + 15, espaceHaut));
 	}
 	
 	private void donnerPosition(MouseEvent e) 
@@ -85,6 +90,9 @@ public class AffichageExecution extends JPanel
 					break;
 				case 1: 
 					t.stop();
+					break;
+				case 2 :
+					t.save();
 					break;
 			}
 		}
