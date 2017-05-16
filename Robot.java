@@ -34,10 +34,10 @@ public class Robot implements Orientation {
 			 (this.orientation == GAUCHE && o == DROITE))
 			this.orientation = HAUT;
 		else if (this.orientation == BAS && o == GAUCHE)
-		       this.orientation == DROITE;
+		       this.orientation = DROITE;
 		else if (this.orientation == BAS && o == DROITE)
-			this.orienation = GAUCHE;	
-		else if (this.orientation == BAS && (o == HAUT || o = BAS))
+			this.orientation = GAUCHE;	
+		else if (this.orientation == BAS && (o == HAUT || o == BAS))
 			this.orientation = o;	
 		else // HAUT & HAUT   BAS & BAS 
 			this.orientation = o;	
