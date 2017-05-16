@@ -72,29 +72,6 @@ public class AffichageFonction extends JPanel implements Orientation
 		//System.out.println(e.getX());
 		//System.out.println(e.getY());
 
-		
-<<<<<<< HEAD
-		if(e.getX()>espaceGauche && e.getX()<espaceGauche+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
-		{
-			tablette.ajouterAction(GAUCHE);
-			s.addPoint(gauche);
-		}
-		if(e.getX()> espaceGauche + tailleImage + 5 && e.getX()< espaceGauche + tailleImage + 5 +45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
-		{
-			tablette.ajouterAction(DROITE);
-			s.addPoint(droite);
-		}
-		if(e.getX()> espaceGauche + ((tailleImage + 5) * 2) && e.getX()< espaceGauche + ((tailleImage + 5) * 2)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
-		{
-			tablette.ajouterAction(HAUT);
-			s.addPoint(haut);
-		}
-		if(e.getX()>espaceGauche + ((tailleImage + 5) * 3) && e.getX()<espaceGauche + ((tailleImage + 5) * 3)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
-		{
-			tablette.ajouterAction(BAS);
-			s.addPoint(bas);	
-		}
-=======
 		if(e.getX()>espaceGauche && e.getX()<espaceGauche+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45) {
 			tablette.ajouterAction(GAUCHE);
 			s.addPoint(gauche);
@@ -118,8 +95,7 @@ public class AffichageFonction extends JPanel implements Orientation
 			s.addPoint(bas);
 			System.out.println("DEBUG: bas");
 		}
-
->>>>>>> 6b1285bfc20437d819a688f60b2925babb678790
+		
 		//if(e.getX()> espaceGauche + ((tailleImage + 5) * 4) && e.getX()< espaceGauche + ((tailleImage + 5) * 4)+45 && e.getY()>espaceHaut && e.getY()<espaceHaut+45)
 			//tablette.ajouterFonction(??);
 
