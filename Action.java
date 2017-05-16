@@ -14,8 +14,6 @@ public class Action extends Instruction implements Orientation {
 
 	public void executer()
 	{
-		//Robot r = Grille.getRobot(); // r = Grille.reference;
-
 		Robot r = Grille.r;
 		int[][] cel = Grille.cellules;
 
@@ -59,8 +57,7 @@ public class Action extends Instruction implements Orientation {
 				break;
 			}
 		}
-
-		//Grille.updateGrille(action_num);
+ 
 		Grille.updateGrille(action_num, cel, r);
 	}
 }

@@ -82,6 +82,8 @@ public class Tablette implements Orientation{
 	
 	// test function
 	public static void main(String[] args) {
+		// test 1 (simple action)
+		/*
 		Grille g = new Grille();
 		Tablette t = new Tablette();	
 		g.display(g.cellules);
@@ -89,6 +91,55 @@ public class Tablette implements Orientation{
 		t.ajouterAction(HAUT);
 		t.ajouterAction(DROITE);
 		t.ajouterAction(HAUT);		
+		t.start();
+		g.display(g.cellules);
+		*/
+	
+		// test 2 (fonction)
+		/*
+		Grille g = new Grille();
+		Tablette t = new Tablette();
+		t.ajouterAction(HAUT);
+		String[] fct = {"4","1","4"}; // reçue par la vue
+		t.creerFonction(fct);
+		t.ajouterFonction("X0");
+		t.ajouterAction(HAUT);
+		t.start();
+		g.display(g.cellules);
+		g.cleanGrille();
+		g.display(g.cellules);
+		t.start();
+		g.display(g.cellules);	
+		*/
+
+		// test 3 (action qui ne commence pas par haut)
+		/*
+		Grille g = new Grille();
+		Tablette t = new Tablette();
+		t.ajouterAction(DROITE);
+		t.ajouterAction(HAUT);
+		t.ajouterAction(HAUT);
+		t.ajouterAction(DROITE);
+		t.ajouterAction(HAUT);
+		t.ajouterAction(HAUT);
+		t.start();
+		g.display(g.cellules);
+		*/
+
+		// test 4 (remplacer une action)
+		Grille g = new Grille();
+		Tablette t = new Tablette();
+		t.ajouterAction(HAUT);
+		t.ajouterAction(HAUT);
+		String[] fct = {"4","1","4"}; // reçue par la vue
+		t.creerFonction(fct);
+		t.ajouterFonction("X0");
+		t.ajouterAction(HAUT);
+		t.start();
+		g.display(g.cellules);
+		g.cleanGrille();
+		t.initialiserPosition(1); // appllé depuis la vue
+		t.ajouterAction(GAUCHE);
 		t.start();
 		g.display(g.cellules);
 	}	

@@ -24,14 +24,21 @@ public class Grille implements Orientation {
 			else 
 				cel[i][j] = 0;
 		}
-		//tab cel passé par ref ? sinon => return cel and call setCellules ?
+	}
+
+	public static void cleanGrille() {
+		Grille g = new Grille();
+		for (int i = 0; i < HEIGHT; i++) 
+			for (int j = 0; j < WIDTH; j++)
+				g.cellules[i][j] = 0;
+		g.cellules[HEIGHT - 1][0] = 1;
 	}
 
 	// affichage test 
-	public static void display(int[][] cel){
+	public static void display(int[][] cellules){
 		for (int i = 0; i < HEIGHT; i++) {
 			for (int j = 0; j < WIDTH; j++)
-				System.out.print(cel[i][j]);
+				System.out.print(cellules[i][j]);
 			System.out.print('\n');
 		}
 		System.out.print('\n');
