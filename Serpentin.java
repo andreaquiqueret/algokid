@@ -161,7 +161,6 @@ public class Serpentin extends JPanel
 	
 	public void donnerPosition(MouseEvent e) {
 		
-		Point p = new Point (e.getX(), e.getY());
 		if (e.getY() > 13 && e.getY() <40) {
 			for (int i=0; i<=6; i++){
 				if (e.getX() >15+60*i && e.getX() <45+60*i)
@@ -172,12 +171,40 @@ public class Serpentin extends JPanel
 		if(e.getX()>345 && e.getX()<375 && e.getY()>50 && e.getY()<80)
 			System.out.println(7+20*nSerpentin);
 		
-		if (e.getY() > 13 && e.getY() <40) {
-			for (int i=12; i>7; i--){
-				if (e.getX() >15+60*i && e.getX() <45+60*i)
-					System.out.println(i+1+20*nSerpentin);
+		
+		if (e.getY() > 93 && e.getY() <120) {
+			for (int i=0; i<7; i++){
+				if (e.getX() >15+60*i && e.getX() <45+60*i) {
+					if (i==1)
+						System.out.println(12+20*nSerpentin);
+					if (i==2)
+						System.out.println(11+20*nSerpentin);
+					if (i==3)
+						System.out.println(10+20*nSerpentin);
+					if (i==4)
+						System.out.println(9+20*nSerpentin);
+					if (i==5)
+						System.out.println(8+20*nSerpentin);
+				}
 			}
 		}
+		
+		if(e.getX()>20 && e.getX()<47 && e.getY()>170 && e.getY()<185)
+			System.out.println(14+20*nSerpentin);
+		
+		if(e.getX()>20 && e.getX()<45 && e.getY()>103 && e.getY()<125)
+			System.out.println(13+20*nSerpentin);
+		
+		if (e.getY() > 175 && e.getY() <200) {
+			for (int i=0; i<6; i++){
+				if (e.getX() >70+65*i && e.getX() <90+65*i) {
+					System.out.println(i+15+20*nSerpentin);
+				}
+			}
+		}
+		
+		if(e.getX()>350 && e.getX()<375 && e.getY()>205 && e.getY()<225)
+			System.out.println(20+20*nSerpentin);
 		
 		 
 	}
