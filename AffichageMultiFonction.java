@@ -17,19 +17,21 @@ public class AffichageMultiFonction extends JPanel
 	private int espaceGauche;
 	private int espaceHaut;
 	private int tailleRect;
-	private ArrayList<Point> lesPoints;
+	private int pos;
+	private ArrayList<PointImage> lesPoints;
 	private Color couleur;
 	private BufferedImage image;
 	
 	public AffichageMultiFonction(String path) throws IOException
 	{
-		lesPoints = new ArrayList<Point>();
+		lesPoints = new ArrayList<PointImage>();
 		epaisseur = 30;
 		espaceGauche = 80;
 		espaceHaut = 8;
 		tailleRect = 325;
 		couleur = new Color(204, 42, 88);
 		image = ImageIO.read(new File(path + "fonction.png"));
+		initPoints();
 		
 		MouseListener ml = new MouseListener() {
 			  public void mouseClicked(MouseEvent e) {
@@ -46,6 +48,14 @@ public class AffichageMultiFonction extends JPanel
 		};
 		  
 		this.addMouseListener(ml);
+	}
+	
+	public void initPoints()
+	{
+		for(int i = 0; i < 6; i++)
+		{
+			lesPoints.add(new PointImage(new Point(espaceGauche + 10 + (60 * i), espaceHaut + 4), null));
+		}
 	}
 	
 	public void paintComponent(Graphics g)
@@ -65,7 +75,19 @@ public class AffichageMultiFonction extends JPanel
 			g.setColor(Color.BLACK);
 			g.drawOval(espaceGauche + 10 + (60 * i), espaceHaut + 4, epaisseur - 10, epaisseur - 10);
 			g.drawString(String.valueOf(i + 1), espaceGauche + 17 + (60 * i), espaceHaut + 18);
-			lesPoints.add(new Point(espaceGauche + 10 + (60 * i), espaceHaut + 4));
+		}
+		
+		dessineImage(g);
+	}
+	
+	private void dessineImage(Graphics g) 
+	{
+		for(PointImage p : lesPoints)
+		{
+			if(p.getImg() != null)
+			{
+				g.drawImage(p.getImg(), p.getX() - 12, p.getY() - 12, null);
+			}
 		}
 	}
 	
@@ -76,10 +98,11 @@ public class AffichageMultiFonction extends JPanel
 		
 		while(trouver == false && i < lesPoints.size())
 		{
-			Point p = lesPoints.get(i);
+			PointImage p = lesPoints.get(i);
 			if((e.getY() >= p.getY() && e.getY() <= p.getY() + (epaisseur - 10)) && (e.getX() >= p.getX() && e.getX() <= p.getX() + (epaisseur - 10)))
 			{
 				trouver = true;
+				AffichageTablette.estFonction = true;
 			}
 			else
 			{
@@ -89,7 +112,33 @@ public class AffichageMultiFonction extends JPanel
 		
 		if(trouver)
 		{
-			System.out.println(i + 1);
+			pos= i+1;
 		}
+		System.out.println(i+1);
+			pos= -1;
+	}
+	
+	public void addPoint(BufferedImage img)
+	{
+		boolean trouver = false;
+		int i = 0;
+		
+		while(!trouver && i < lesPoints.size())
+		{
+			PointImage p = lesPoints.get(i);
+			
+			if(p.getImg() == null)
+			{
+				p.setImg(img);
+				trouver = true;
+			}
+			else
+			{
+				i++;
+			}
+		}
+		repaint();
+		validate();
+		
 	}
 }

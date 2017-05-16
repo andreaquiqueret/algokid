@@ -233,6 +233,7 @@ public class Serpentin extends JPanel
 				{
 					p.setImg(null);
 					trouver = true;
+					AffichageTablette.estFonction = false;
 				}
 				else
 				{
@@ -259,6 +260,7 @@ public class Serpentin extends JPanel
 				if((e.getY() >= p.getY() && e.getY() <= p.getY() + (epaisseur - 10)) && (e.getX() >= p.getX() && e.getX() <= p.getX() + (epaisseur - 10)))
 				{
 					trouver = true;
+					AffichageTablette.estFonction = false;
 				}
 				else
 				{
@@ -270,6 +272,7 @@ public class Serpentin extends JPanel
 				if((e.getY() >= p.getY() && e.getY() <= p.getY() + tailleImage) && (e.getX() >= p.getX() && e.getX() <= p.getX() + tailleImage))
 				{
 					trouver = true;
+					AffichageTablette.estFonction = false;
 				}
 				else
 				{
@@ -309,4 +312,8 @@ public class Serpentin extends JPanel
 			validate();
 		}
 	}
+	
+	
+	
+	
 }
