@@ -35,6 +35,10 @@ public class Tablette implements Orientation{
 		this.principale.executer();
 
 	}
+	
+	public void stop() {
+			Grille.cleanGrille();
+	}
 
 	public void creerFonction(String[] fonction) {
 		ArrayList<Instruction> instructions = new ArrayList<Instruction>();
@@ -144,6 +148,8 @@ public class Tablette implements Orientation{
 		t.start();
 		g.display(g.cellules);
 	}	
+	
+	
 
 }
 

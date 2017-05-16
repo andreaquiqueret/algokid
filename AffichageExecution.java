@@ -80,10 +80,12 @@ public class AffichageExecution extends JPanel
 		{
 			switch(i)
 			{
-				case 0: System.out.println("play");
+				case 0: 
 					t.start();
 					break;
-				case 1: System.out.println("stop");
+				case 1: 
+					t.stop();
+					break;
 			}
 		}
 	}

@@ -68,7 +68,7 @@ public class AffichageGrille extends JPanel implements Observer {
 	}
 	
 	public void update(Observable o, Object arg)  {
-		System.out.println("je vais dans run merci andréa");
+
 		repaint();
 		
 	}
