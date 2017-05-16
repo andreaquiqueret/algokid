@@ -1,4 +1,7 @@
 import java.util.*;
+import java.text.*;
+import java.lang.*;
+import java.io.*;
 
 public class Tablette implements Orientation{
 
@@ -24,11 +27,42 @@ public class Tablette implements Orientation{
 	}
 
 	public void save() {
-		
+		DateFormat dateF = new SimpleDateFormat("yyyyMMddHHmmss");
+		Date date = new Date();
+		String path = new String(dateF.format(date));
+		ArrayList<Instruction> i = this.principale.getInstructions();
+		try {
+			PrintWriter w = new PrintWriter(path, "UTF-8");
+			for (int k = 0; k < i.size(); k++) {
+				Instruction inst = i.get(k);
+				if (inst instanceof Action) {
+					w.println(((Action)inst).getActionNumber());
+				} /*else { // inst instanceof Function (pas dans cette version)
+					System.out.println("DEBUG: ENTER ELSE FCT");
+					w.print("f:");
+					ArrayList<Instruction> sub_inst = ((Fonction)inst).getInstructions();
+					for (int l = 0; l < sub_inst.size(); l++) 
+						w.print(((Action)sub_inst.get(l)).getActionNumber()+":");
+					w.print("\n");	
+				}*/
+			}
+		w.close();
+		} catch(IOException e) {
+			// ignore. (create the file)
+		}
+			
 	}
 	
-	public void charger() {
-		
+	public void charger(String path) 
+		throws FileNotFoundException, IOException {
+		String line;
+		FileReader fr = new FileReader(path);
+		BufferedReader br = new BufferedReader(fr);
+		System.out.println("ENTER");
+		while ((line = br.readLine()) != null) {
+			this.principale.add_action(Integer.parseInt(line), this.pos);
+		}
+			
 	}
 	
 	public void start() {
@@ -72,7 +106,8 @@ public class Tablette implements Orientation{
 		pos = -1;
 	}
 	
-	public void ajouterFonction(String nom){
+	//list unitilisée dans cette version
+	public void ajouter_Fonction(String nom){
 		for (int j=0; j<fonctions.size(); j++) {
 			if (fonctions.get(j).getNom().compareTo(nom)==0)
 				principale.add_fonction(fonctions.get(j), pos);
@@ -108,7 +143,7 @@ public class Tablette implements Orientation{
 		t.ajouterAction(HAUT);
 		String[] fct = {"4","1","4"}; // reçue par la vue
 		t.creerFonction(fct);
-		t.ajouterFonction("X0");
+		t.ajouter_Fonction("X0");
 		t.ajouterAction(HAUT);
 		t.start();
 		g.display(g.cellules);
@@ -139,7 +174,7 @@ public class Tablette implements Orientation{
 		t.ajouterAction(HAUT);
 		String[] fct = {"4","1","4"}; // reçue par la vue
 		t.creerFonction(fct);
-		t.ajouterFonction("X0");
+		t.ajouter_Fonction("X0");
 		t.ajouterAction(HAUT);
 		t.start();
 		g.display(g.cellules);
